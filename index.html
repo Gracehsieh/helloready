@@ -98,7 +98,7 @@
   .editform input.en-input{font-family:"Cormorant Garamond",serif;color:var(--wine)}
   .editform input.ph-input{font-size:14px;color:#8a7a66;letter-spacing:1px}
   .editform input:focus{outline:none;border-color:var(--wine)}
-  .editform select{font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);border:1.5px solid var(--gold-soft);border-radius:10px;padding:11px 12px;width:100%;background:#fff;min-height:46px}
+  .editform select{font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);border:1.5px solid var(--gold-soft);border-radius:10px;padding:11px 38px 11px 12px;width:100%;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'12'%20height%3D'12'%20viewBox%3D'0%200%2012%2012'%3E%3Cpath%20d%3D'M3%204.5l3%203%203-3'%20fill%3D'none'%20stroke%3D'%23b08544'%20stroke-width%3D'1.6'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px;-webkit-appearance:none;-moz-appearance:none;appearance:none;min-height:46px}
   .editform select:focus{outline:none;border-color:var(--wine)}
   .form-btns{display:flex;gap:8px;margin-top:2px}
   .btn{font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:500;padding:11px 20px;border-radius:24px;cursor:pointer;border:1.5px solid transparent;transition:.15s;min-height:44px}
@@ -138,7 +138,7 @@
   .sheet h3{font-family:"Noto Serif TC",serif;font-size:18px;color:var(--wine-deep);margin-bottom:4px}
   .sheet .grp{margin-top:18px}
   .sheet .grp-label{font-size:13px;font-weight:700;color:#8a7257;margin-bottom:8px;display:flex;align-items:center;gap:6px}
-  .sheet select{width:100%;font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);background:var(--ivory);border:1.5px solid var(--gold-soft);border-radius:14px;padding:13px 14px;min-height:48px}
+  .sheet select{width:100%;font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);background-color:var(--ivory);background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'12'%20height%3D'12'%20viewBox%3D'0%200%2012%2012'%3E%3Cpath%20d%3D'M3%204.5l3%203%203-3'%20fill%3D'none'%20stroke%3D'%23b08544'%20stroke-width%3D'1.6'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:12px;-webkit-appearance:none;-moz-appearance:none;appearance:none;border:1.5px solid var(--gold-soft);border-radius:14px;padding:13px 40px 13px 14px;min-height:48px}
   .sheet select:focus{outline:none;border-color:var(--wine)}
   .sheet input{width:100%;font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);background:var(--ivory);border:1.5px solid var(--gold-soft);border-radius:14px;padding:13px 14px;min-height:48px}
   .sheet input:focus{outline:none;border-color:var(--wine)}
@@ -176,13 +176,13 @@
   /* landing / splash */
   .landing{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 32%, #fff7ec, var(--ivory));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;transition:opacity .55s ease, visibility .55s}
   .landing.hide{opacity:0;visibility:hidden;pointer-events:none}
-  .landing .art{width:128px;height:128px;margin-bottom:2px}
-  .landing h1{font-family:"Noto Serif TC",serif;font-weight:700;font-size:30px;color:var(--ink);letter-spacing:2px;margin-top:6px}
+  .landing .art{width:144px;height:144px;margin-bottom:2px}
+  .landing h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:38px;color:var(--ink);letter-spacing:.5px;margin-top:6px}
   .landing .tag-en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:27px;color:var(--wine);margin-top:20px;letter-spacing:.5px}
-  .landing .tag-zh{font-family:"Noto Serif TC",serif;font-size:17px;color:#6d5c46;margin-top:10px;letter-spacing:3px}
+  .landing .tag-zh{font-family:"Noto Serif TC",serif;font-size:17px;color:#6d5c46;margin-top:18px;letter-spacing:3px}
   .landing .divider{width:54px;height:2px;background:var(--gold);opacity:.6;margin:22px auto 0}
   .landing .langs{font-family:"Cormorant Garamond",serif;font-size:14px;color:var(--gold);letter-spacing:4px;margin-top:16px;text-transform:uppercase}
-  .landing .enter{margin-top:30px;border:none;background:var(--wine);color:#fff;font-family:"Noto Sans TC",sans-serif;font-size:16px;font-weight:600;padding:15px 44px;border-radius:30px;cursor:pointer;box-shadow:0 8px 22px rgba(140,47,51,.3);min-height:54px}
+  .landing .enter{margin-top:30px;border:none;background:var(--wine);color:#fff;font-family:"Noto Sans TC",sans-serif;font-size:16px;font-weight:600;padding:15px 40px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(140,47,51,.3);min-height:54px}
   .landing .enter:active{transform:scale(.97)}
 </style>
 </head>
@@ -197,12 +197,11 @@
     <path d="M60 28 l3.4 8.6 8.6 3.4 -8.6 3.4 -3.4 8.6 -3.4 -8.6 -8.6 -3.4 8.6 -3.4 z" fill="#b08544"/>
     <path d="M90 48 l2.2 5.6 5.6 2.2 -5.6 2.2 -2.2 5.6 -2.2 -5.6 -5.6 -2.2 5.6 -2.2 z" fill="#c9a96a"/>
   </svg>
-  <h1>婚禮對話卡</h1>
-  <div class="tag-en">Tap. Listen. Say.</div>
+  <h1>HelloReady</h1>
   <div class="tag-zh">關鍵時刻，知道怎麼說。</div>
   <div class="divider"></div>
   <div class="langs">中文 · English</div>
-  <button class="enter" id="enterBtn">進入 · Enter</button>
+  <button class="enter" id="enterBtn">進入婚宴場景</button>
 </div>
 
 <div id="warnbar" class="warnbar">此瀏覽器可能不支援語音播放，建議用手機的 Safari 或 Chrome 開啟。</div>
