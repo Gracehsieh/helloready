@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>婚禮對話卡 · Wedding Phrase Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light only;
+    --ivory:#faf4ea; --paper:#fffdf8; --ink:#2b2018;
+    --wine:#8c2f33; --wine-deep:#672228;
+    --gold:#b08544; --gold-soft:#c9a96a;
+    --line:#e7dcc8; --shadow:rgba(80,40,20,.12);
+    --safe-top:env(safe-area-inset-top,0px);
+    --safe-bot:env(safe-area-inset-bottom,0px);
+    --fs:1;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+  html{scroll-behavior:smooth;background:var(--ivory)}
+  body{
+    font-family:"Noto Sans TC",sans-serif; color:var(--ink); line-height:1.5;
+    max-width:560px; margin:0 auto; min-height:100vh;
+    padding-bottom:calc(70px + var(--safe-bot));
+    background:var(--ivory);
+  }
+  body::before{content:"";position:fixed;inset:0;background:var(--ivory);z-index:-1}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+
+  .topbar{position:sticky;top:0;z-index:40;background:rgba(250,244,234,.94);backdrop-filter:saturate(1.4) blur(8px);-webkit-backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line);padding-top:var(--safe-top)}
+  .appbar{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 14px}
+  .appbar .brand{display:flex;align-items:baseline;gap:8px;min-width:0;flex:1}
+  .appbar .brand h1{font-family:"Noto Serif TC",serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .appbar .brand .sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:13px;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .gear{flex:0 0 auto;width:44px;height:44px;border-radius:10px;border:1.5px solid var(--gold-soft);background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--wine)}
+  .gear svg{width:20px;height:20px;fill:var(--wine)}
+  .gear:active{transform:scale(.94)}
+  .appbar-actions{display:flex;align-items:center;gap:10px}
+  .addbtn{display:flex;align-items:center;gap:6px;height:46px;padding:0 16px;border-radius:14px;border:1.5px solid var(--gold-soft);background:var(--paper);color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:600;cursor:pointer}
+  .addbtn svg{width:18px;height:18px;fill:var(--wine)}
+  .addbtn:active{transform:scale(.96)}
+
+  .chipbar{display:flex;gap:8px;overflow-x:auto;padding:16px 14px 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .editbar{display:none}
+  .edit-toggle-top{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--wine);background:var(--paper);color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:600;padding:0 14px;border-radius:10px;cursor:pointer;height:44px;transition:.16s}
+  .edit-toggle-top svg{width:18px;height:18px;fill:currentColor}
+  .edit-toggle-top.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+  .edit-toggle-top:active{transform:scale(.97)}
+  .chipbar::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;min-height:38px;display:flex;align-items:center;border:1.5px solid var(--gold-soft);background:var(--paper);color:#8a6f48;font-family:"Noto Sans TC",sans-serif;font-size:14px;font-weight:500;padding:6px 15px;border-radius:30px;cursor:pointer;white-space:nowrap;transition:.16s}
+  .chip:active{transform:scale(.96)}
+  .chip.active{background:var(--wine);border-color:var(--wine);color:#fff;box-shadow:0 2px 8px rgba(140,47,51,.25)}
+
+  .intro{text-align:center;padding:16px 24px 6px}
+  .intro p{font-size:13.5px;color:#7a6b58;max-width:330px;margin:0 auto;line-height:1.55}
+  .intro .em{color:var(--wine);font-weight:500}
+
+  section{padding:4px 14px 2px;scroll-margin-top:118px}
+  #block-key{scroll-margin-top:118px}
+  .sec-title{font-family:"Noto Serif TC",serif;font-size:calc(19px * var(--fs));font-weight:700;color:var(--wine-deep);margin:24px 4px 14px;display:flex;align-items:center;gap:10px}
+  .sec-title .en{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:calc(14px * var(--fs));color:var(--gold)}
+  .sec-title .sechead-actions{margin-left:auto;display:none;gap:6px}
+  body.editing .sec-title .sechead-actions{display:flex}
+  .sec-sub{font-size:12.5px;color:#8a7a66;margin:0 4px 10px}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:11px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:0 1px 3px var(--shadow);transition:transform .12s, box-shadow .18s, border-color .18s;position:relative;overflow:hidden}
+  .card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  body.editing .card{cursor:default}
+  .card:active{transform:scale(.985)}
+  .card.speaking{border-color:var(--gold);box-shadow:0 4px 18px rgba(176,133,68,.32)}
+  .card.speaking::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold)}
+  .card .txt{flex:1;min-width:0}
+  .card .zh{font-family:"Noto Serif TC",serif;font-size:calc(17px * var(--fs));font-weight:700;color:var(--ink);line-height:1.4}
+  .card .en{font-family:"Cormorant Garamond",serif;font-size:calc(22px * var(--fs));color:var(--wine);margin-top:9px;line-height:1.3;font-weight:600}
+  .card .ph{font-family:"Noto Sans TC",sans-serif;font-size:calc(13px * var(--fs));color:#847b66;margin-top:9px;line-height:1.3;letter-spacing:1px}
+  .speaker{flex-shrink:0;width:50px;height:50px;border-radius:50%;background:var(--ivory);border:1.5px solid var(--gold-soft);display:flex;align-items:center;justify-content:center;transition:.18s}
+  .card.speaking .speaker{background:var(--gold);border-color:var(--gold);animation:pulse 1.1s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(176,133,68,.45)}50%{box-shadow:0 0 0 7px rgba(176,133,68,0)}}
+  .speaker svg{width:23px;height:23px;fill:var(--gold);transition:.18s}
+  .card.speaking .speaker svg{fill:#fff}
+
+  .row-actions{flex-shrink:0;display:none;gap:6px;align-items:center}
+  body.editing .row-actions{display:flex}
+  body.editing .speaker{display:none}
+  .icon-btn{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--ivory);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s}
+  .icon-btn svg{width:19px;height:19px;fill:#7a6b58}
+  .icon-btn.del{border-color:#e6c4c4;background:#fdf1f1}
+  .icon-btn.del svg{fill:var(--wine)}
+  .icon-btn:active{transform:scale(.92)}
+
+  .editform{flex:1;display:flex;flex-direction:column;gap:8px}
+  .editform label{font-size:11px;color:#9a8a76;margin-bottom:-4px}
+  .editform input{font-family:"Noto Sans TC",sans-serif;font-size:16px;color:var(--ink);border:1.5px solid var(--gold-soft);border-radius:10px;padding:11px 12px;width:100%;background:#fff}
+  .editform input.en-input{font-family:"Cormorant Garamond",serif;color:var(--wine)}
+  .editform input.ph-input{font-size:14px;color:#8a7a66;letter-spacing:1px}
+  .editform input:focus{outline:none;border-color:var(--wine)}
+  .editform select{font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);border:1.5px solid var(--gold-soft);border-radius:10px;padding:11px 12px;width:100%;background:#fff;min-height:46px}
+  .editform select:focus{outline:none;border-color:var(--wine)}
+  .form-btns{display:flex;gap:8px;margin-top:2px}
+  .btn{font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:500;padding:11px 20px;border-radius:24px;cursor:pointer;border:1.5px solid transparent;transition:.15s;min-height:44px}
+  .btn-save{background:var(--wine);color:#fff}
+  .btn-save:active{background:var(--wine-deep)}
+  .btn-cancel{background:var(--paper);color:#7a6b58;border-color:var(--line)}
+  .translate-btn{align-self:flex-start;border:1.5px solid var(--gold);background:#fff7ec;color:#9a6b1f;font-family:"Noto Sans TC",sans-serif;font-size:13.5px;font-weight:600;padding:0 15px;border-radius:10px;cursor:pointer;min-height:44px}
+  .translate-btn:disabled{opacity:.55}
+  .translate-btn:active{transform:scale(.97)}
+  .tr-status{font-size:11.5px;color:#8a7257;margin:-2px 2px 0;min-height:14px;line-height:1.4}
+
+  .add-row{display:none;width:100%;border:1.5px dashed var(--gold-soft);background:transparent;color:var(--gold);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:500;padding:0 14px;border-radius:14px;cursor:pointer;margin-bottom:11px;min-height:44px}
+  .add-row:active{background:#fff7ec}
+  body.editing .add-row{display:block}
+
+  .key-wrap{margin:8px 14px 4px;background:linear-gradient(155deg,#fff7ec,#fdeede);border:1.5px solid var(--gold-soft);border-radius:22px;padding:16px 14px 14px;box-shadow:0 6px 22px rgba(140,47,51,.10)}
+  .key-wrap .badge{display:inline-block;background:var(--wine);color:#fff;font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;letter-spacing:1px}
+  .key-wrap h2{font-family:"Noto Serif TC",serif;font-size:calc(18px * var(--fs));color:var(--wine-deep);margin:8px 2px 2px}
+  .key-wrap .note{font-size:12.5px;color:#8a7257;margin:0 2px 12px}
+  .key-wrap .card{background:#fffdfa}
+
+  .footer-tools{display:none;text-align:center;padding:22px 14px 0}
+  body.editing .footer-tools{display:block}
+  .add-section-btn{border:1.5px dashed var(--wine);background:transparent;color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:500;padding:0 24px;border-radius:14px;cursor:pointer;width:100%;min-height:44px}
+
+  footer{text-align:center;font-size:11px;color:#b3a690;padding:26px 24px 0;font-family:"Cormorant Garamond",serif;font-style:italic}
+  .warnbar{display:none;background:var(--wine);color:#fff;font-size:12.5px;text-align:center;padding:10px 16px;line-height:1.4}
+
+  .confirm-box{flex:1;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .confirm-box .ask{font-size:14px;color:var(--wine-deep);font-weight:500}
+
+  .sheet-overlay{position:fixed;inset:0;background:rgba(43,32,24,.4);opacity:0;pointer-events:none;transition:opacity .22s;z-index:50}
+  .sheet-overlay.open{opacity:1;pointer-events:auto}
+  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;max-width:560px;margin:0 auto;background:var(--paper);border-radius:24px 24px 0 0;box-shadow:0 -10px 40px rgba(80,40,20,.25);padding:8px 20px calc(24px + var(--safe-bot));transform:translateY(105%);transition:transform .26s cubic-bezier(.2,.8,.2,1);max-height:86vh;overflow-y:auto}
+  .sheet.open{transform:translateY(0)}
+  .sheet-handle{width:42px;height:5px;border-radius:3px;background:var(--line);margin:8px auto 14px}
+  .sheet h3{font-family:"Noto Serif TC",serif;font-size:18px;color:var(--wine-deep);margin-bottom:4px}
+  .sheet .grp{margin-top:18px}
+  .sheet .grp-label{font-size:13px;font-weight:700;color:#8a7257;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+  .sheet select{width:100%;font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);background:var(--ivory);border:1.5px solid var(--gold-soft);border-radius:14px;padding:13px 14px;min-height:48px}
+  .sheet select:focus{outline:none;border-color:var(--wine)}
+  .sheet input{width:100%;font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);background:var(--ivory);border:1.5px solid var(--gold-soft);border-radius:14px;padding:13px 14px;min-height:48px}
+  .sheet input:focus{outline:none;border-color:var(--wine)}
+  .seg{display:flex;gap:8px}
+  .seg button,.sheet-btn{flex:1;min-height:48px;border:1.5px solid var(--gold-soft);background:var(--ivory);color:var(--ink);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:500;border-radius:14px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:6px}
+  .seg button.active{background:var(--wine);border-color:var(--wine);color:#fff}
+  .fs-seg button{font-weight:700}
+  .fs-seg button[data-fs="0.9"]{font-size:13px}
+  .fs-seg button[data-fs="1"]{font-size:15px}
+  .fs-seg button[data-fs="1.18"]{font-size:17px}
+  .fs-seg button[data-fs="1.4"]{font-size:19px}
+  .preview-btn{flex:0 0 auto;padding:0 18px;color:var(--gold);min-width:96px}
+  .voice-row{display:flex;gap:8px;align-items:stretch}
+  .voice-row select{flex:1}
+  .sheet-btn.edit.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .sheet-btn.full{width:100%}
+  .reset-link{display:block;width:100%;text-align:center;background:none;border:none;color:#b3a690;font-size:13px;text-decoration:underline;cursor:pointer;padding:14px 8px 2px;min-height:44px}
+  .refresh-link{display:block;width:100%;text-align:center;background:none;border:none;color:var(--wine);font-size:12.5px;text-decoration:underline;cursor:pointer;padding:8px;min-height:40px}
+  .sheet .tip{font-size:11.5px;color:#a89a84;margin-top:7px;line-height:1.45}
+
+  /* AI-translated marker (only visible in edit mode) */
+  .auto-tag{display:none;margin-top:6px;background:#f3e7cf;color:#9a6b1f;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:10px;letter-spacing:.5px}
+  body.editing .auto-tag{display:inline-block}
+
+  /* add popup modal */
+  .modal-overlay{position:fixed;inset:0;background:rgba(43,32,24,.45);z-index:70;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}
+  .modal-overlay.open{opacity:1;pointer-events:auto}
+  .modal{background:var(--paper);border-radius:20px;padding:22px 20px 20px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(80,40,20,.28);transform:translateY(20px);transition:transform .22s cubic-bezier(.2,.8,.2,1)}
+  .modal-overlay.open .modal{transform:translateY(0)}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .modal-header h3{font-family:"Noto Serif TC",serif;font-size:18px;color:var(--wine-deep);font-weight:700}
+  .modal-close{width:32px;height:32px;border:none;background:none;cursor:pointer;color:#9a8a76;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:8px}
+  .modal-close:active{background:var(--ivory)}
+
+  /* landing / splash */
+  .landing{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 32%, #fff7ec, var(--ivory));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;transition:opacity .55s ease, visibility .55s}
+  .landing.hide{opacity:0;visibility:hidden;pointer-events:none}
+  .landing .art{width:128px;height:128px;margin-bottom:2px}
+  .landing h1{font-family:"Noto Serif TC",serif;font-weight:700;font-size:30px;color:var(--ink);letter-spacing:2px;margin-top:6px}
+  .landing .tag-en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:27px;color:var(--wine);margin-top:20px;letter-spacing:.5px}
+  .landing .tag-zh{font-family:"Noto Serif TC",serif;font-size:17px;color:#6d5c46;margin-top:10px;letter-spacing:3px}
+  .landing .divider{width:54px;height:2px;background:var(--gold);opacity:.6;margin:22px auto 0}
+  .landing .langs{font-family:"Cormorant Garamond",serif;font-size:14px;color:var(--gold);letter-spacing:4px;margin-top:16px;text-transform:uppercase}
+  .landing .enter{margin-top:30px;border:none;background:var(--wine);color:#fff;font-family:"Noto Sans TC",sans-serif;font-size:16px;font-weight:600;padding:15px 44px;border-radius:30px;cursor:pointer;box-shadow:0 8px 22px rgba(140,47,51,.3);min-height:54px}
+  .landing .enter:active{transform:scale(.97)}
+</style>
+</head>
+<body>
+
+<div class="landing" id="landing">
+  <svg class="art" viewBox="0 0 120 120" aria-hidden="true">
+    <g fill="none" stroke-width="4">
+      <circle cx="49" cy="76" r="23" stroke="#c9a96a"/>
+      <circle cx="71" cy="76" r="23" stroke="#b08544"/>
+    </g>
+    <path d="M60 28 l3.4 8.6 8.6 3.4 -8.6 3.4 -3.4 8.6 -3.4 -8.6 -8.6 -3.4 8.6 -3.4 z" fill="#b08544"/>
+    <path d="M90 48 l2.2 5.6 5.6 2.2 -5.6 2.2 -2.2 5.6 -2.2 -5.6 -5.6 -2.2 5.6 -2.2 z" fill="#c9a96a"/>
+  </svg>
+  <h1>婚禮對話卡</h1>
+  <div class="tag-en">Tap. Listen. Say.</div>
+  <div class="tag-zh">關鍵時刻，知道怎麼說。</div>
+  <div class="divider"></div>
+  <div class="langs">中文 · English</div>
+  <button class="enter" id="enterBtn">進入 · Enter</button>
+</div>
+
+<div id="warnbar" class="warnbar">此瀏覽器可能不支援語音播放，建議用手機的 Safari 或 Chrome 開啟。</div>
+
+<div class="topbar">
+  <div class="appbar">
+    <div class="brand">
+      <h1 id="appTitle">婚禮對話卡</h1>
+    </div>
+    <div class="appbar-actions">
+      <button class="edit-toggle-top" id="editToggleTop" aria-label="編輯"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg><span class="elabel">編輯</span></button>
+      <button class="gear" id="gearBtn" aria-label="設定">
+        <svg viewBox="0 0 24 24"><path d="M19.14 12.94a7.49 7.49 0 0 0 .05-1.88l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.3 7.3 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.43h-3.84a.5.5 0 0 0-.5.43l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.18 8.84a.5.5 0 0 0 .12.64l2.03 1.58a7.49 7.49 0 0 0 0 1.88L2.3 14.52a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.39.31.6.22l2.39-.96c.49.38 1.03.7 1.62.94l.36 2.54c.04.25.25.43.5.43h3.84c.25 0 .46-.18.5-.43l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.21.09.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="chipbar" id="chipbar"></div>
+</div>
+
+<div class="intro">
+  <p>點任何一句，手機會幫您唸出來。<span class="em">再點一下會重唸。</span>下方小字是近似讀音。</p>
+</div>
+
+<div class="key-wrap" id="block-key" data-spy>
+  <span class="badge">只要記這六句</span>
+  <h2>給雙方父母的萬用句</h2>
+  <p class="note">緊張的話，記住下面六句就很夠用了。</p>
+  <div id="keyList"></div>
+  <button class="add-row" data-add-key="1">＋ 新增萬用句</button>
+</div>
+
+<div id="sections"></div>
+
+<div class="footer-tools">
+  <button class="add-section-btn" id="addSectionBtn">＋ 新增一個分類</button>
+</div>
+
+<footer>Wishing them a lifetime of happiness ·  祝幸福美滿</footer>
+
+<div class="modal-overlay" id="addModal" role="dialog" aria-modal="true" aria-label="新增句子">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>新增句子</h3>
+      <button class="modal-close" id="modalClose" aria-label="關閉">✕</button>
+    </div>
+    <div class="editform">
+      <label>中文</label>
+      <input class="zh-input" id="modal-zh" placeholder="輸入中文">
+      <button type="button" class="translate-btn" id="modalTrBtn">✨ 翻譯成英文（自動填英文＋讀音）</button>
+      <div class="tr-status" id="modalTrStatus"></div>
+      <label>English</label>
+      <input class="en-input" id="modal-en" placeholder="Type the English">
+      <label>近似讀音（選填）</label>
+      <input class="ph-input" id="modal-ph" placeholder="例如：三Q 佛 ...">
+      <label>分類 Category</label>
+      <select class="cat-input" id="modal-cat"></select>
+      <div class="form-btns">
+        <button class="btn btn-save" id="modalSave">儲存</button>
+        <button class="btn btn-cancel" id="modalCancel">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet-overlay" id="sheetOverlay"></div>
+<div class="sheet" id="settingsSheet" role="dialog" aria-label="設定" aria-modal="true">
+  <div class="sheet-handle"></div>
+  <h3>設定</h3>
+  <div class="grp">
+    <div class="grp-label">字體大小 <span style="font-weight:400;color:#b3a690">Text size</span></div>
+    <div class="seg fs-seg" id="fsSeg">
+      <button data-fs="0.9">小</button><button data-fs="1" class="active">標準</button><button data-fs="1.18">大</button><button data-fs="1.4">特大</button>
+    </div>
+  </div>
+  <div class="grp">
+    <div class="grp-label">聲音 <span style="font-weight:400;color:#b3a690">Voice</span></div>
+    <div class="voice-row">
+      <select id="voiceSelect" aria-label="選擇聲音"></select>
+      <button class="sheet-btn preview-btn" id="voicePreview">▶ 試聽</button>
+    </div>
+    <p class="tip">⭐ 的聲音比較自然。注意：iPhone 的 Siri／部分進階語音不一定能給網頁使用。</p>
+    <button class="refresh-link" id="voiceRefresh">↻ 剛下載了新語音？點此重新整理清單</button>
+  </div>
+  <div class="grp">
+    <div class="grp-label">語速 <span style="font-weight:400;color:#b3a690">Speed</span></div>
+    <div class="seg"><button data-rate="0.85" id="btnNormal" class="active">正常</button><button data-rate="0.6" id="btnSlow">🐢 慢速</button></div>
+  </div>
+  <div class="grp">
+    <div class="grp-label">翻譯（AI，選填）<span style="font-weight:400;color:#b3a690">AI translate</span></div>
+    <input id="gkeyInput" type="password" autocomplete="off" placeholder="貼上免費的 Google Gemini 金鑰">
+    <p class="tip">編輯時可用 AI 把中文翻成英文並自動產生讀音。若內建的共用額度用完，請在此貼上自己的免費 Gemini 金鑰（Google AI Studio 免費取得、免信用卡）。金鑰只存在這支裝置、不會上傳，也不會放進網頁檔。留空則用基本翻譯（只有英文、沒有讀音）。</p>
+  </div>
+  <button class="reset-link" id="resetBtn">恢復成原本的內容</button>
+</div>
+
+<script>
+/* =========================================================
+   CONTENT PACK (future-ready). A pack = theme + categories.
+   Phrase text is keyed by language code, so other language
+   pairs and themes (dining, shopping...) reuse this shape.
+   Defaults below are authored as [native, target, reading].
+   ========================================================= */
+const PACK_META = { id:'wedding', theme:'wedding', nativeLang:'zh', targetLang:'en',
+  title:{ zh:'婚禮對話卡', en:'Wedding Phrase Card' } };
+
+const KEY_DEFAULT = [
+  ["終於見到您了。","It's wonderful to finally meet you.","依次 萬德佛 圖 法奈裡 密 揪"],
+  ["我們聽過很多關於您的好話。","We've heard many wonderful things about you.","屋夫 賀德 妹妮 萬德佛 性斯 阿包 揪"],
+  ["謝謝您養育了這麼棒的兒子/女兒。","Thank you for raising such a wonderful son/daughter.","三Q 佛 瑞辛 薩取 阿 萬德佛 桑/都特"],
+  ["我們很高興成為一家人。","We're happy to become one family.","屋爾 哈皮 圖 必康 萬 法米利"],
+  ["希望以後常常見面。","We hope to see each other often.","屋 厚普 圖 西 一取 阿惹 歐分"],
+  ["讓我們一起祝福他們幸福快樂。","Let's wish them a happy life together.","累次 維許 樂母 阿 哈皮 賴夫 圖蓋惹"],
+];
+const SECTIONS_DEFAULT = [
+  { t:"簡單用語", e:"Just the basics", sub:"給最緊張、只想說幾個字的家人。", rows:[
+    ["很高興認識您。","Nice to meet you.","耐斯 圖 密 揪"],
+    ["謝謝。","Thank you.","三Q"],
+    ["恭喜！","Congratulations!","康 格拉 求 累 遜斯"],
+    ["乾杯！","Cheers!","起爾斯"],
+    ["真漂亮！","Beautiful!","標踢佛"],
+    ["太棒了！","Wonderful!","萬德佛"],
+    ["我很開心。","I'm very happy.","愛母 飛瑞 哈皮"],
+    ["讓我們拍照吧！","Let's take a picture!","累次 鐵克 阿 批克丘"],
+  ]},
+  { t:"表達開心的心情", e:"Glad to meet you", rows:[
+    ["我們真的很高興今天見到您。","We are so happy to meet you today.","屋 阿 搜 哈皮 圖 密 揪 圖黛"],
+    ["終於見到您了！","It's wonderful to finally meet you!","依次 萬德佛 圖 法奈裡 密 揪"],
+    ["我們聽過很多關於您的好話。","We've heard many wonderful things about you.","屋夫 賀德 妹妮 萬德佛 性斯 阿包 揪"],
+    ["今天對我們來說很特別。","Today is very special for us.","圖黛 意思 飛瑞 斯佩修 佛 阿斯"],
+    ["我們非常期待今天。","We've been looking forward to today.","屋夫 兵 路金 佛沃 圖 圖黛"],
+    ["能見到您真是太好了。","It's so nice to meet you.","依次 搜 耐斯 圖 密 揪"],
+  ]},
+  { t:"成為一家人", e:"Becoming one family", rows:[
+    ["從今天起我們就是一家人了。","Starting today, we're one family.","斯塔停 圖黛, 屋爾 萬 法米利"],
+    ["很高興能成為親家。","We're happy to become family.","屋爾 哈皮 圖 必康 法米利"],
+    ["希望未來有更多相聚的機會。","We hope to spend more time together in the future.","屋 厚普 圖 斯班 摩 太姆 圖蓋惹 引 惹 服丘"],
+    ["希望以後常常見面。","We hope to see each other often.","屋 厚普 圖 西 一取 阿惹 歐分"],
+    ["歡迎隨時來找我們。","You're always welcome to visit us.","油 歐威斯 威爾康 圖 維吉特 阿斯"],
+    ["希望有機會招待您。","We hope to host you someday.","屋 厚普 圖 厚斯特 揪 桑黛"],
+  ]},
+  { t:"關於新人", e:"About the couple", rows:[
+    ["謝謝您養育了這麼棒的兒子。","Thank you for raising such a wonderful son.","三Q 佛 瑞辛 薩取 阿 萬德佛 桑"],
+    ["謝謝您養育了這麼棒的女兒。","Thank you for raising such a wonderful daughter.","三Q 佛 瑞辛 薩取 阿 萬德佛 多特"],
+    ["我們很高興他們找到了彼此。","We're happy they found each other.","屋爾 哈皮 賊 房得 一取 阿惹"],
+    ["他們在一起很幸福。","They are very happy together.","賊 阿 飛瑞 哈皮 圖蓋惹"],
+    ["我們為他們感到驕傲。","We're very proud of them.","屋爾 飛瑞 撲勞得 歐夫 樂母"],
+    ["我們祝福他們永遠幸福。","We wish them a lifetime of happiness.","屋 維許 樂母 阿 賴夫太姆 歐夫 哈皮尼斯"],
+  ]},
+  { t:"表達感謝", e:"Saying thank you", rows:[
+    ["謝謝您今天的到來。","Thank you for being here today.","三Q 佛 必引 喜爾 圖黛"],
+    ["謝謝您一路上的支持。","Thank you for all your support.","三Q 佛 歐 油爾 色波特"],
+    ["我們非常感激。","We are very grateful.","屋 阿 飛瑞 葛瑞特佛"],
+    ["今天能和您一起慶祝真好。","It's wonderful to celebrate together.","依次 萬德佛 圖 賽樂布瑞特 圖蓋惹"],
+    ["謝謝您成為這一天的一部分。","Thank you for being part of this day.","三Q 佛 必引 趴特 歐夫 利斯 黛"],
+  ]},
+  { t:"旅行相關", e:"About the trip", rows:[
+    ["您旅途還順利嗎？","How was your trip?","好 沃斯 油爾 吹普"],
+    ["您是什麼時候到的？","When did you arrive?","萬 弟 揪 阿賴夫"],
+    ["您喜歡這裡嗎？","Do you like it here?","度 揪 賴克 一特 喜爾"],
+    ["有機會去附近走走嗎？","Have you had a chance to explore the area?","哈夫 揪 哈得 阿 強斯 圖 衣克斯普羅 利 欸瑞兒"],
+    ["希望您這次玩得開心。","I hope you're enjoying your visit.","愛 厚普 油 引糾因 油爾 維吉特"],
+  ]},
+  { t:"婚禮當天", e:"At the wedding", rows:[
+    ["您喜歡今天的婚禮嗎？","Are you enjoying the wedding?","阿 揪 引糾因 惹 威丁"],
+    ["今天真是美好的一天。","It's such a beautiful day.","依次 薩取 阿 標踢佛 黛"],
+    ["新人看起來真幸福。","The couple looks so happy.","惹 卡剖 路克斯 搜 哈皮"],
+    ["今天的氣氛真好。","The atmosphere is wonderful today.","惹 欸特摩斯費爾 意思 萬德佛 圖黛"],
+    ["我很喜歡今天的佈置。","I love the decorations today.","愛 拉夫 惹 德可瑞訊斯 圖黛"],
+  ]},
+  { t:"食物", e:"About the food", rows:[
+    ["您吃過了嗎？","Have you had something to eat?","哈夫 揪 哈得 桑性 圖 一特"],
+    ["您喜歡今天的餐點嗎？","Are you enjoying the food?","阿 揪 引糾因 惹 夫得"],
+    ["您最喜歡哪一道菜？","What's your favorite dish?","哇次 油爾 飛佛瑞特 弟噓"],
+    ["請多吃一點。","Please enjoy more food.","普利斯 引糾 摩 夫得"],
+    ["希望您喜歡這些菜色。","I hope you enjoy the meal.","愛 厚普 揪 引糾 惹 米爾"],
+  ]},
+  { t:"輕鬆聊天", e:"Friendly chatter", rows:[
+    ["我們終於見面了！","We finally get to meet!","屋 法奈裡 給特 圖 密"],
+    ["今天大家都好開心。","Everyone seems so happy today.","愛福瑞萬 西母斯 搜 哈皮 圖黛"],
+    ["我很喜歡您的衣服。","I love your outfit.","愛 拉夫 油爾 凹特費特"],
+    ["您今天看起來很棒。","You look wonderful today.","揪 路克 萬德佛 圖黛"],
+    ["我們來拍張照片吧！","Let's take a photo together!","累次 鐵克 阿 佛投 圖蓋惹"],
+  ]},
+];
+
+/* ===== storage keys ===== */
+const PKEY='weddingCard:pack:v2';      // new pack-shaped data
+const DKEY='weddingCard:data:v1';      // legacy data (migrated if found)
+const VKEY='weddingCard:voice:v1';
+const FKEY='weddingCard:fontscale:v1';
+const MKEY='weddingCard:mig:basicsFirst:v1';
+const TKEY='weddingCard:gkey:v1';
+const Store=(function(){
+  const hasKV = typeof window.storage!=='undefined' && window.storage && typeof window.storage.get==='function';
+  const mem={};
+  return {
+    async load(k){ if(hasKV){try{const r=await window.storage.get(k);return r?r.value:null;}catch(e){return null;}} try{return localStorage.getItem(k);}catch(e){return mem[k]||null;} },
+    async save(k,v){ if(hasKV){try{await window.storage.set(k,v);}catch(e){}return;} try{localStorage.setItem(k,v);}catch(e){mem[k]=v;} },
+    async clear(k){ if(hasKV){try{await window.storage.delete(k);}catch(e){}return;} try{localStorage.removeItem(k);}catch(e){delete mem[k];} }
+  };
+})();
+
+function uid(){return 'u'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+
+/* build a fresh pack from the authored defaults */
+function seed(){
+  const N=PACK_META.nativeLang, T=PACK_META.targetLang;
+  const ph=(r,i,pfx)=>({id:pfx, text:{[N]:r[0],[T]:r[1]}, phonetic:{[T]:r[2]||''}});
+  return {
+    packId:PACK_META.id, theme:PACK_META.theme,
+    nativeLang:N, targetLang:T, title:Object.assign({},PACK_META.title),
+    key: KEY_DEFAULT.map((r,i)=>ph(r,i,'k'+i)),
+    categories: SECTIONS_DEFAULT.map((s,si)=>({
+      id:'s'+si, title:{[N]:s.t,[T]:s.e}, sub:{[N]:s.sub||''},
+      phrases:s.rows.map((r,ri)=>ph(r,ri,'s'+si+'r'+ri))
+    }))
+  };
+}
+
+/* migrate legacy {key:[{zh,en,ph}], sections:[{t,e,sub,rows}]} -> pack shape */
+function migrateLegacy(old){
+  const N='zh', T='en';
+  const conv=(it)=>({id:it.id||uid(), text:{[N]:it.zh||'',[T]:it.en||''}, phonetic:{[T]:it.ph||''}});
+  return {
+    packId:PACK_META.id, theme:PACK_META.theme, nativeLang:N, targetLang:T,
+    title:Object.assign({},PACK_META.title),
+    key:(old.key||[]).map(conv),
+    categories:(old.sections||[]).map(s=>({
+      id:s.id||uid(), title:{[N]:s.t||'',[T]:s.e||''}, sub:{[N]:s.sub||''},
+      phrases:(s.rows||[]).map(conv)
+    }))
+  };
+}
+
+let DATA=seed();
+let editMode=false, editingId=null, confirmId=null, secEditId=null, focusAfter=null;
+let geminiKey='';
+/* OPTIONAL shared key: paste YOUR free Gemini key between the quotes to let
+   everyone use AI translation without their own key. A key here is visible in
+   the page source, so use a free key with NO billing attached (worst case the
+   free quota empties; it can never be charged). Leave '' to require each user
+   to add their own key in Settings. */
+const DEFAULT_GKEY='';
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ===== accessors (language-pair aware) ===== */
+function pNat(p){return (p.text&&p.text[DATA.nativeLang])||'';}
+function pTgt(p){return (p.text&&p.text[DATA.targetLang])||'';}
+function pPh(p){return (p.phonetic&&p.phonetic[DATA.targetLang])||'';}
+function cTitleNat(c){return (c.title&&c.title[DATA.nativeLang])||'';}
+function cTitleTgt(c){return (c.title&&c.title[DATA.targetLang])||'';}
+function cSub(c){return (c.sub&&c.sub[DATA.nativeLang])||'';}
+function newPhrase(){return {id:uid(), text:{[DATA.nativeLang]:'',[DATA.targetLang]:''}, phonetic:{[DATA.targetLang]:''}, isNew:true};}
+function newCategory(){return {id:uid(), title:{[DATA.nativeLang]:'',[DATA.targetLang]:''}, sub:{[DATA.nativeLang]:''}, phrases:[], isNewSec:true};}
+function allPhrases(){const a=[...DATA.key];DATA.categories.forEach(c=>a.push(...c.phrases));return a;}
+
+/* font scale */
+function applyFontScale(v){document.documentElement.style.setProperty('--fs',v);document.querySelectorAll('#fsSeg button').forEach(b=>b.classList.toggle('active',b.dataset.fs===String(v)));}
+
+/* ===== speech + voices ===== */
+let rate=0.85, voice=null, selectedVoiceName=null;
+const synth=window.speechSynthesis;
+function voiceRank(v){const n=(v.name||'');let r=0;if(/siri/i.test(n))r+=6;if(/premium|enhanced|neural|natural/i.test(n))r+=5;if(/google/i.test(n))r+=3;if(/samantha|ava|allison|aaron|nicky|tom|daniel|karen|moira|serena|evan/i.test(n))r+=2;if(/en[-_]US/i.test(v.lang))r+=1;return r;}
+function tgtVoices(){if(!synth)return [];const pre=DATA.targetLang;return synth.getVoices().filter(v=>v.lang&&v.lang.toLowerCase().indexOf(pre)===0);}
+function bestVoice(){const vs=tgtVoices().slice().sort((a,b)=>voiceRank(b)-voiceRank(a));return vs[0]||(synth?synth.getVoices()[0]:null)||null;}
+function resolveVoice(){let v=null;if(selectedVoiceName)v=tgtVoices().find(x=>x.name===selectedVoiceName)||(synth?synth.getVoices().find(x=>x.name===selectedVoiceName):null);voice=v||bestVoice();}
+function populateVoices(){if(!synth)return;const sel=document.getElementById('voiceSelect');const vs=tgtVoices().slice().sort((a,b)=>voiceRank(b)-voiceRank(a));if(vs.length===0)return;sel.innerHTML='';vs.forEach(v=>{const o=document.createElement('option');o.value=v.name;o.textContent=(voiceRank(v)>=5?'⭐ ':'')+v.name+'  ('+v.lang+')';sel.appendChild(o);});resolveVoice();if(voice)sel.value=voice.name;}
+let speakingCard=null;
+function speak(text,card){if(!synth||!text)return;synth.cancel();if(speakingCard)speakingCard.classList.remove('speaking');const u=new SpeechSynthesisUtterance(text);u.lang=(voice&&voice.lang)||(DATA.targetLang+'-US');u.rate=rate;u.pitch=1;if(voice)u.voice=voice;if(card){card.classList.add('speaking');speakingCard=card;u.onend=()=>{card.classList.remove('speaking');if(speakingCard===card)speakingCard=null;};u.onerror=()=>{card.classList.remove('speaking');};}synth.speak(u);}
+function previewVoice(){speak("Nice to meet you. We're happy to meet you today.",null);}
+if(synth){populateVoices();synth.onvoiceschanged=()=>populateVoices();}else{document.getElementById('warnbar').style.display='block';}
+window.addEventListener('focus',()=>{if(synth)populateVoices();});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&synth)populateVoices();});
+
+/* ===== data ops ===== */
+function removeItem(id){DATA.key=DATA.key.filter(x=>x.id!==id);DATA.categories.forEach(c=>{c.phrases=c.phrases.filter(x=>x.id!==id);});}
+function currentLocationKey(id){if(DATA.key.some(x=>x.id===id))return 'key';const c=DATA.categories.find(c=>c.phrases.some(x=>x.id===id));return c?c.id:'key';}
+function placeInto(target,item){if(target==='key'){DATA.key.push(item);}else{const c=DATA.categories.find(c=>c.id===target);(c?c.phrases:DATA.key).push(item);}}
+function catOptions(id){
+  const cur=currentLocationKey(id);
+  let html='<option value="key"'+(cur==='key'?' selected':'')+'>⭐ 常用</option>';
+  DATA.categories.forEach(c=>{html+='<option value="'+c.id+'"'+(cur===c.id?' selected':'')+'>'+escHtml(cTitleNat(c)||'未命名分類')+'</option>';});
+  return html;
+}
+async function save(){await Store.save(PKEY,JSON.stringify(DATA));}
+
+/* ===== translation: AI (Gemini) if key set, else free no-key MyMemory ===== */
+const LANGMAP={zh:'zh-CN',en:'en',ko:'ko',ja:'ja',es:'es',fr:'fr',de:'de'};
+function langName(code){return ({zh:'Chinese',en:'English',ko:'Korean',ja:'Japanese',es:'Spanish',fr:'French',de:'German'})[code]||code;}
+async function translate(text){
+  const from=DATA.nativeLang, to=DATA.targetLang;
+  const key=geminiKey||DEFAULT_GKEY;
+  if(key){
+    try{ return await translateGemini(text,from,to,key); }
+    catch(e){
+      const r=await translateMyMemory(text,from,to);
+      r.note=(geminiKey?'AI 翻譯失敗，已改用基本翻譯。':'共用的 AI 額度可能用完了，已改用基本翻譯。可到「設定」貼上自己的免費 Gemini 金鑰，恢復 AI 翻譯與讀音。');
+      return r;
+    }
+  }
+  return await translateMyMemory(text,from,to);
+}
+async function translateGemini(text,from,to,key){
+  const model='gemini-2.5-flash-lite';
+  const url='https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+encodeURIComponent(key);
+  const prompt='You translate short phrases for a wedding phrase card spoken to in-laws. '
+    +'Translate this '+langName(from)+' into natural, warm, polite '+langName(to)+'. '
+    +'Also write a phonetic approximation of that '+langName(to)+' pronunciation using '+langName(from)+' characters, so a '+langName(from)+' speaker can read it aloud. '
+    +'Also translate your '+langName(to)+' translation literally back into '+langName(from)+' (field "back") so the user can check the meaning is right. '
+    +'Reply with ONLY compact JSON, no markdown: {"translation":"...","phonetic":"...","back":"..."}\n\nText: '+text;
+  const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
+  if(!r.ok)throw new Error('gemini '+r.status);
+  const data=await r.json();
+  let t=((((data.candidates||[])[0]||{}).content||{}).parts||[])[0];
+  t=(t&&t.text)||'';
+  t=t.replace(/```json|```/g,'').trim();
+  const obj=JSON.parse(t);
+  return {translation:obj.translation||'',phonetic:obj.phonetic||'',back:obj.back||'',note:''};
+}
+async function translateMyMemory(text,from,to){
+  const lp=(LANGMAP[from]||from)+'|'+(LANGMAP[to]||to);
+  const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text)+'&langpair='+encodeURIComponent(lp));
+  if(!r.ok)throw new Error('mymemory '+r.status);
+  const data=await r.json();
+  const tr=(data.responseData&&data.responseData.translatedText)||'';
+  if(!tr)throw new Error('empty');
+  let back='';
+  try{
+    const lp2=(LANGMAP[to]||to)+'|'+(LANGMAP[from]||from);
+    const r2=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(tr)+'&langpair='+encodeURIComponent(lp2));
+    if(r2.ok){const d2=await r2.json();back=(d2.responseData&&d2.responseData.translatedText)||'';}
+  }catch(e){}
+  return {translation:tr,phonetic:'',back:back,note:'基本翻譯（沒有讀音）。'};
+}
+
+const ICON_SPEAK='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.06a7 7 0 0 1 0 13.48v2.06a9 9 0 0 0 0-17.6z"/></svg>';
+const ICON_EDIT='<svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>';
+const ICON_DEL='<svg viewBox="0 0 24 24"><path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>';
+
+function cardEl(item){
+  const c=document.createElement('div');c.className='card';
+  if(editingId===item.id){
+    c.innerHTML='<div class="editform"><label>中文</label><input class="zh-input" id="in-zh-'+item.id+'" placeholder="輸入中文" value="'+escAttr(pNat(item))+'"><button type="button" class="translate-btn">✨ 翻譯成英文（自動填英文＋讀音）</button><div class="tr-status"></div><label>English</label><input class="en-input" id="in-en-'+item.id+'" placeholder="Type the English" value="'+escAttr(pTgt(item))+'"><label>近似讀音（選填）</label><input class="ph-input" id="in-ph-'+item.id+'" placeholder="例如：三Q 佛 ..." value="'+escAttr(pPh(item))+'"><label>分類 Category</label><select class="cat-input" id="in-cat-'+item.id+'">'+catOptions(item.id)+'</select><div class="form-btns"><button class="btn btn-save">儲存</button><button class="btn btn-cancel">取消</button></div></div>';
+    let translatedFlag=false, lastBack='';
+    c.querySelector('.btn-save').addEventListener('click',async()=>{
+      const zh=c.querySelector('.zh-input').value.trim();
+      const en=c.querySelector('.en-input').value.trim();
+      const ph=c.querySelector('.ph-input').value.trim();
+      const chosenCat=c.querySelector('.cat-input').value;
+      if(!zh&&!en){removeItem(item.id);editingId=null;await save();render();return;}
+      item.text[DATA.nativeLang]=zh;item.text[DATA.targetLang]=en;item.phonetic[DATA.targetLang]=ph;
+      if(translatedFlag){item.auto=true;item._back=lastBack;}
+      delete item.isNew;
+      const cur=currentLocationKey(item.id);
+      if(chosenCat&&chosenCat!==cur){removeItem(item.id);placeInto(chosenCat,item);}
+      editingId=null;await save();render();
+    });
+    c.querySelector('.btn-cancel').addEventListener('click',async()=>{if(item.isNew){removeItem(item.id);}editingId=null;await save();render();});
+    const tb=c.querySelector('.translate-btn');
+    if(tb)tb.addEventListener('click',async()=>{
+      const zhv=c.querySelector('.zh-input').value.trim();
+      const status=c.querySelector('.tr-status');
+      if(!zhv){status.textContent='請先輸入中文';return;}
+      const label=tb.textContent;tb.disabled=true;tb.textContent='翻譯中…';status.textContent='';
+      try{
+        const res=await translate(zhv);
+        if(res.translation)c.querySelector('.en-input').value=res.translation;
+        if(res.phonetic)c.querySelector('.ph-input').value=res.phonetic;
+        translatedFlag=true;lastBack=res.back||'';
+        const safeBack=res.back?escHtml(res.back):'';
+        let msg=safeBack?('翻回中文核對：「'+safeBack+'」<br>意思一樣就可以儲存；不一樣請改中文再翻一次。'):'';
+        if(res.note)msg+=(msg?'<br>':'')+escHtml(res.note);
+        if(res.translation&&!res.phonetic&&!res.note)msg+=(msg?'<br>':'')+'（此來源沒有讀音）';
+        if(!msg)msg='已翻譯。';
+        status.innerHTML=msg;
+      }catch(e){status.textContent='翻譯失敗，請檢查網路後再試，或手動輸入英文。';}
+      finally{tb.disabled=false;tb.textContent=label;}
+    });
+    focusAfter='in-zh-'+item.id;return c;
+  }
+  if(confirmId===item.id){
+    c.innerHTML='<div class="confirm-box"><span class="ask">確定要刪除這句嗎？</span></div>';
+    const box=c.querySelector('.confirm-box');const yes=document.createElement('button');yes.className='btn btn-save';yes.textContent='刪除';const no=document.createElement('button');no.className='btn btn-cancel';no.textContent='取消';const wrap=document.createElement('div');wrap.style.display='flex';wrap.style.gap='8px';wrap.appendChild(yes);wrap.appendChild(no);box.appendChild(wrap);
+    yes.addEventListener('click',async()=>{removeItem(item.id);confirmId=null;await save();render();});
+    no.addEventListener('click',()=>{confirmId=null;render();});return c;
+  }
+  let inner='<div class="txt"><div class="zh">'+escHtml(pNat(item))+'</div><div class="en">'+escHtml(pTgt(item))+'</div>';
+  if(item.auto)inner+='<span class="auto-tag">AI 翻譯</span>';
+  if(pPh(item))inner+='<div class="ph">'+escHtml(pPh(item))+'</div>';
+  inner+='</div>';c.innerHTML=inner;
+  const sp=document.createElement('div');sp.className='speaker';sp.setAttribute('aria-hidden','true');sp.innerHTML=ICON_SPEAK;sp.addEventListener('click',(e)=>{e.stopPropagation();speak(pTgt(item),c);});c.appendChild(sp);
+  const actions=document.createElement('div');actions.className='row-actions';
+  const eBtn=document.createElement('button');eBtn.className='icon-btn';eBtn.setAttribute('aria-label','修改');eBtn.innerHTML=ICON_EDIT;eBtn.addEventListener('click',(e)=>{e.stopPropagation();editingId=item.id;confirmId=null;render();});
+  const dBtn=document.createElement('button');dBtn.className='icon-btn del';dBtn.setAttribute('aria-label','刪除');dBtn.innerHTML=ICON_DEL;dBtn.addEventListener('click',(e)=>{e.stopPropagation();confirmId=item.id;editingId=null;render();});
+  actions.appendChild(eBtn);actions.appendChild(dBtn);c.appendChild(actions);
+  if(!editMode){c.setAttribute('role','button');c.tabIndex=0;c.setAttribute('aria-label','唸出：'+pTgt(item));c.addEventListener('click',()=>speak(pTgt(item),c));c.addEventListener('keydown',(e)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();speak(pTgt(item),c);}});}
+  return c;
+}
+function addBtn(label,onClick){const b=document.createElement('button');b.className='add-row';b.textContent=label;b.addEventListener('click',onClick);return b;}
+
+function render(){
+  const y=window.scrollY;
+  const kl=document.getElementById('keyList');kl.innerHTML='';
+  DATA.key.forEach(it=>kl.appendChild(cardEl(it)));
+  const wrap=document.getElementById('sections');wrap.innerHTML='';
+  DATA.categories.forEach(cat=>{
+    const sec=document.createElement('section');sec.id='block-'+cat.id;sec.dataset.spy='';
+    if(secEditId===cat.id){
+      const form=document.createElement('div');form.className='card';
+      form.innerHTML='<div class="editform"><label>分類名稱（中文）</label><input class="zh-input" id="sec-t-'+cat.id+'" placeholder="例如：聊聊家鄉" value="'+escAttr(cTitleNat(cat))+'"><label>English (optional)</label><input class="en-input" id="sec-e-'+cat.id+'" placeholder="e.g. About home" value="'+escAttr(cTitleTgt(cat))+'"><div class="form-btns"><button class="btn btn-save">儲存</button><button class="btn btn-cancel">取消</button></div></div>';
+      form.querySelector('.btn-save').addEventListener('click',async()=>{const t=form.querySelector('#sec-t-'+cat.id).value.trim();const e=form.querySelector('#sec-e-'+cat.id).value.trim();if(!t&&!e&&cat.phrases.length===0){DATA.categories=DATA.categories.filter(x=>x.id!==cat.id);}else{cat.title[DATA.nativeLang]=t||'未命名分類';cat.title[DATA.targetLang]=e;delete cat.isNewSec;}secEditId=null;await save();render();});
+      form.querySelector('.btn-cancel').addEventListener('click',async()=>{if(cat.isNewSec&&cat.phrases.length===0){DATA.categories=DATA.categories.filter(x=>x.id!==cat.id);}secEditId=null;await save();render();});
+      sec.appendChild(form);focusAfter='sec-t-'+cat.id;
+    } else {
+      const h=document.createElement('div');h.className='sec-title';h.innerHTML=escHtml(cTitleNat(cat))+(cTitleTgt(cat)?' <span class="en">'+escHtml(cTitleTgt(cat))+'</span>':'');
+      const ha=document.createElement('div');ha.className='sechead-actions';
+      const eB=document.createElement('button');eB.className='icon-btn';eB.setAttribute('aria-label','改分類');eB.innerHTML=ICON_EDIT;eB.addEventListener('click',()=>{secEditId=cat.id;render();});
+      const dB=document.createElement('button');dB.className='icon-btn del';dB.setAttribute('aria-label','刪分類');dB.innerHTML=ICON_DEL;dB.addEventListener('click',async()=>{if(confirm('刪除整個「'+cTitleNat(cat)+'」分類？裡面的句子也會一起刪除。')){DATA.categories=DATA.categories.filter(x=>x.id!==cat.id);await save();render();}});
+      ha.appendChild(eB);ha.appendChild(dB);h.appendChild(ha);sec.appendChild(h);
+      const sub=cSub(cat);if(sub){const sd=document.createElement('div');sd.className='sec-sub';sd.textContent=sub;sec.appendChild(sd);}
+    }
+    cat.phrases.forEach(it=>sec.appendChild(cardEl(it)));
+    sec.appendChild(addBtn('＋ 新增句子',()=>openAddPopup(cat.id)));
+    wrap.appendChild(sec);
+  });
+  buildChips();
+  document.body.classList.toggle('editing',editMode);
+  window.scrollTo(0,y);
+  if(focusAfter){const el=document.getElementById(focusAfter);if(el)el.focus();focusAfter=null;}
+  setupSpy();
+}
+
+function topbarH(){const t=document.querySelector('.topbar');return t?t.offsetHeight:110;}
+function scrollToEl(el){if(!el)return;const top=el.getBoundingClientRect().top+window.scrollY-topbarH()-8;window.scrollTo({top:Math.max(0,top),behavior:reduceMotion?'auto':'smooth'});}
+function buildChips(){const bar=document.getElementById('chipbar');bar.innerHTML='';const mk=(label,target)=>{const b=document.createElement('button');b.className='chip';b.textContent=label;b.dataset.target=target;b.addEventListener('click',()=>scrollToEl(document.getElementById(target)));bar.appendChild(b);};mk('⭐ 常用','block-key');DATA.categories.forEach(c=>mk(cTitleNat(c),'block-'+c.id));}
+function setActiveChip(id){document.querySelectorAll('.chip').forEach(ch=>{const on=ch.dataset.target===id;ch.classList.toggle('active',on);if(on)ch.scrollIntoView({block:'nearest',inline:'center',behavior:reduceMotion?'auto':'smooth'});});}
+let spy=null;
+function setupSpy(){if(spy)spy.disconnect();const opts={root:null,rootMargin:'-'+(topbarH()+14)+'px 0px -62% 0px',threshold:0};spy=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)setActiveChip(e.target.id);});},opts);document.querySelectorAll('[data-spy]').forEach(el=>spy.observe(el));}
+window.addEventListener('resize',()=>{setupSpy();});
+
+function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escAttr(s){return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+
+const sheet=document.getElementById('settingsSheet');
+const overlay=document.getElementById('sheetOverlay');
+function openSheet(){overlay.classList.add('open');sheet.classList.add('open');}
+function closeSheet(){overlay.classList.remove('open');sheet.classList.remove('open');}
+document.getElementById('gearBtn').addEventListener('click',openSheet);
+overlay.addEventListener('click',closeSheet);
+
+let addPopupTranslatedFlag=false, addPopupLastBack='';
+function catOptionsForModal(defaultTarget){
+  let html='<option value="key"'+(defaultTarget==='key'?' selected':'')+'>⭐ 常用</option>';
+  DATA.categories.forEach(c=>{html+='<option value="'+c.id+'"'+(c.id===defaultTarget?' selected':'')+'>'+escHtml(cTitleNat(c)||'未命名分類')+'</option>';});
+  return html;
+}
+function openAddPopup(targetCatId){
+  addPopupTranslatedFlag=false;addPopupLastBack='';
+  document.getElementById('modal-zh').value='';
+  document.getElementById('modal-en').value='';
+  document.getElementById('modal-ph').value='';
+  document.getElementById('modalTrStatus').textContent='';
+  document.getElementById('modal-cat').innerHTML=catOptionsForModal(targetCatId||'key');
+  document.getElementById('addModal').classList.add('open');
+  setTimeout(()=>document.getElementById('modal-zh').focus(),50);
+}
+function closeAddPopup(){document.getElementById('addModal').classList.remove('open');}
+document.getElementById('modalCancel').addEventListener('click',closeAddPopup);
+document.getElementById('modalClose').addEventListener('click',closeAddPopup);
+document.getElementById('addModal').addEventListener('click',(e)=>{if(e.target===e.currentTarget)closeAddPopup();});
+document.getElementById('modalSave').addEventListener('click',async()=>{
+  const zh=document.getElementById('modal-zh').value.trim();
+  const en=document.getElementById('modal-en').value.trim();
+  const ph=document.getElementById('modal-ph').value.trim();
+  const chosenCat=document.getElementById('modal-cat').value;
+  if(!zh&&!en){closeAddPopup();return;}
+  const it=newPhrase();
+  it.text[DATA.nativeLang]=zh;it.text[DATA.targetLang]=en;it.phonetic[DATA.targetLang]=ph;
+  if(addPopupTranslatedFlag){it.auto=true;it._back=addPopupLastBack;}
+  delete it.isNew;
+  placeInto(chosenCat,it);
+  await save();closeAddPopup();render();
+});
+document.getElementById('modalTrBtn').addEventListener('click',async()=>{
+  const zhv=document.getElementById('modal-zh').value.trim();
+  const status=document.getElementById('modalTrStatus');
+  const tb=document.getElementById('modalTrBtn');
+  if(!zhv){status.textContent='請先輸入中文';return;}
+  const label=tb.textContent;tb.disabled=true;tb.textContent='翻譯中…';status.textContent='';
+  try{
+    const res=await translate(zhv);
+    if(res.translation)document.getElementById('modal-en').value=res.translation;
+    if(res.phonetic)document.getElementById('modal-ph').value=res.phonetic;
+    addPopupTranslatedFlag=true;addPopupLastBack=res.back||'';
+    const safeBack=res.back?escHtml(res.back):'';
+    let msg=safeBack?('翻回中文核對：「'+safeBack+'」<br>意思一樣就可以儲存；不一樣請改中文再翻一次。'):'';
+    if(res.note)msg+=(msg?'<br>':'')+escHtml(res.note);
+    if(res.translation&&!res.phonetic&&!res.note)msg+=(msg?'<br>':'')+'（此來源沒有讀音）';
+    if(!msg)msg='已翻譯。';
+    status.innerHTML=msg;
+  }catch(e){status.textContent='翻譯失敗，請檢查網路後再試，或手動輸入英文。';}
+  finally{tb.disabled=false;tb.textContent=label;}
+});
+
+const landing=document.getElementById('landing');
+function enterApp(){landing.classList.add('hide');}
+document.getElementById('enterBtn').addEventListener('click',enterApp);
+landing.addEventListener('click',(e)=>{if(e.target===landing)enterApp();});
+
+document.querySelectorAll('#fsSeg button').forEach(b=>{b.addEventListener('click',async()=>{const v=b.dataset.fs;applyFontScale(v);await Store.save(FKEY,v);});});
+document.querySelectorAll('.seg [data-rate]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.seg [data-rate]').forEach(x=>x.classList.remove('active'));b.classList.add('active');rate=parseFloat(b.dataset.rate);});});
+document.getElementById('voiceSelect').addEventListener('change',async function(){selectedVoiceName=this.value;resolveVoice();await Store.save(VKEY,selectedVoiceName);previewVoice();});
+document.getElementById('voicePreview').addEventListener('click',previewVoice);
+document.getElementById('voiceRefresh').addEventListener('click',()=>{populateVoices();previewVoice();});
+document.getElementById('gkeyInput').addEventListener('input',async function(){geminiKey=this.value.trim();await Store.save(TKEY,geminiKey);});
+function syncEditBtn(){const b=document.getElementById('editToggleTop');if(b){b.classList.toggle('on',editMode);const lbl=b.querySelector('.elabel');if(lbl)lbl.textContent=editMode?'完成':'編輯';}}
+function setEditMode(on){editMode=on;editingId=null;confirmId=null;secEditId=null;syncEditBtn();render();}
+document.getElementById('editToggleTop').addEventListener('click',()=>setEditMode(!editMode));
+document.querySelector('[data-add-key]').addEventListener('click',()=>openAddPopup('key'));
+
+document.getElementById('addSectionBtn').addEventListener('click',async()=>{const cat=newCategory();DATA.categories.push(cat);secEditId=cat.id;await save();render();window.scrollTo(0,document.body.scrollHeight);});
+document.getElementById('resetBtn').addEventListener('click',async()=>{if(confirm('恢復成最初的內容？您新增與修改的句子都會清除。')){await Store.clear(PKEY);DATA=seed();editingId=null;confirmId=null;secEditId=null;render();closeSheet();}});
+
+/* ===== init ===== */
+(async function(){
+  const sv=await Store.load(VKEY);if(sv)selectedVoiceName=sv;populateVoices();
+  const fsv=await Store.load(FKEY);applyFontScale(fsv||'1');
+  const gk=await Store.load(TKEY);if(gk){geminiKey=gk;const gi=document.getElementById('gkeyInput');if(gi)gi.value=gk;}
+
+  // load order: new pack -> migrate legacy -> seed
+  let loaded=null;
+  const v2=await Store.load(PKEY);
+  if(v2){try{const p=JSON.parse(v2);if(p&&p.key&&p.categories)loaded=p;}catch(e){}}
+  if(!loaded){const v1=await Store.load(DKEY);if(v1){try{const old=JSON.parse(v1);if(old&&old.key&&old.sections){loaded=migrateLegacy(old);}}catch(e){}}}
+  if(loaded)DATA=loaded;
+
+  // ensure language fields present
+  if(!DATA.nativeLang)DATA.nativeLang='zh';
+  if(!DATA.targetLang)DATA.targetLang='en';
+  if(!DATA.title)DATA.title=Object.assign({},PACK_META.title);
+
+  // phonetic backfill from defaults (by id), for any blank readings
+  const sd=seed();const phMap={};
+  sd.key.forEach(i=>phMap[i.id]=pPhOf(i,sd));
+  sd.categories.forEach(c=>c.phrases.forEach(i=>phMap[i.id]=pPhOf(i,sd)));
+  const fill=(p)=>{const cur=(p.phonetic&&p.phonetic[DATA.targetLang])||'';if(!cur&&phMap[p.id]){if(!p.phonetic)p.phonetic={};p.phonetic[DATA.targetLang]=phMap[p.id];}};
+  DATA.key.forEach(fill);DATA.categories.forEach(c=>c.phrases.forEach(fill));
+
+  // one-time: move 簡單用語 / Just the basics to front
+  const migrated=await Store.load(MKEY);
+  if(!migrated){
+    const idx=DATA.categories.findIndex(c=>(c.title&&(c.title.en==='Just the basics'||c.title[DATA.nativeLang]==='簡單用語')));
+    if(idx>0){const moved=DATA.categories.splice(idx,1)[0];DATA.categories.unshift(moved);await save();}
+    await Store.save(MKEY,'1');
+  }
+
+  // one-time: refresh corrected readings on built-in phrases (keeps text edits & added phrases)
+  const PHV='weddingCard:mig:ph:v2';
+  const phdone=await Store.load(PHV);
+  if(!phdone){
+    const corr={};const sd2=seed();
+    sd2.key.forEach(i=>corr[i.id]=i.phonetic[sd2.targetLang]);
+    sd2.categories.forEach(c=>c.phrases.forEach(i=>corr[i.id]=i.phonetic[sd2.targetLang]));
+    const fix=(p)=>{if(corr[p.id]!==undefined){if(!p.phonetic)p.phonetic={};p.phonetic[DATA.targetLang]=corr[p.id];}};
+    DATA.key.forEach(fix);DATA.categories.forEach(c=>c.phrases.forEach(fix));
+    await save();await Store.save(PHV,'1');
+  }
+
+  document.getElementById('appTitle').textContent=(DATA.title&&DATA.title[DATA.nativeLang])||'婚禮對話卡';
+  render();
+})();
+function pPhOf(p,ctx){return (p.phonetic&&p.phonetic[ctx.targetLang])||'';}
+</script>
+</body>
+</html>
