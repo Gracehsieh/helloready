@@ -44,14 +44,7 @@
   .appbar{display:flex;align-items:center;gap:10px;height:60px;padding:0 14px}
   .appbar .brand{display:flex;align-items:baseline;gap:8px;min-width:0;flex:1}
   .appbar .brand h1{font-family:"Noto Serif TC",serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .iconbtn{flex:0 0 auto;width:44px;height:44px;border-radius:10px;border:1.5px solid var(--gold-soft);background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--wine)}
-  .iconbtn svg{width:20px;height:20px;fill:var(--wine)}
-  .iconbtn:active{transform:scale(.94)}
   .appbar-actions{display:flex;align-items:center;gap:10px}
-  .edit-toggle-top{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--wine);background:var(--paper);color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:600;padding:0 14px;border-radius:10px;cursor:pointer;height:44px;transition:.16s}
-  .edit-toggle-top svg{width:18px;height:18px;fill:currentColor}
-  .edit-toggle-top.on{background:var(--wine);color:#fff;border-color:var(--wine)}
-  .edit-toggle-top:active{transform:scale(.97)}
 
   .chipbar{display:flex;gap:8px;overflow-x:auto;padding:16px 14px 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .chipbar::-webkit-scrollbar{display:none}
@@ -82,6 +75,9 @@
   .line-native{font-size:calc(17px * var(--fs));font-weight:700;color:var(--ink);line-height:1.4}
   .line-target{font-size:calc(22px * var(--fs));font-weight:600;color:var(--wine);margin-top:9px;line-height:1.32}
   .line-phonetic{font-size:calc(13px * var(--fs));color:#847b66;margin-top:9px;line-height:1.3}
+  /* English speaker (en pack): English is the primary reference line, Chinese is the learning line */
+  .card.en-speaker .line-native{font-size:calc(20px * var(--fs));font-weight:700;color:var(--ink);line-height:1.38}
+  .card.en-speaker .line-target{font-size:calc(17px * var(--fs));font-weight:600;color:var(--wine);margin-top:8px;line-height:1.4}
   .lang-zh{font-family:"Noto Serif TC",serif}
   .lang-en{font-family:"Cormorant Garamond",serif}
   .lang-pinyin{font-family:"Noto Sans TC",system-ui,sans-serif;letter-spacing:.4px}
@@ -136,9 +132,6 @@
 
   footer{text-align:center;font-size:11px;color:#b3a690;padding:26px 24px 18px;font-family:"Cormorant Garamond",serif;font-style:italic}
   .footer-meta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;font-style:normal;font-family:"Noto Sans TC",sans-serif;font-size:11px;color:#b3a690}
-  .footer-report-btn{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:#b3a690;transition:color .15s;padding:4px;flex-shrink:0}
-  .footer-report-btn:hover,.footer-report-btn:active{color:var(--wine)}
-  .footer-report-btn svg{width:15px;height:15px;fill:currentColor}
   .editform textarea{font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);border:1.5px solid var(--gold-soft);border-radius:10px;padding:11px 12px;width:100%;background:#fff;resize:vertical;min-height:90px}
   .editform textarea:focus{outline:none;border-color:var(--wine)}
   #contactStatus{font-size:12px;color:#8a7257;margin-top:4px;min-height:16px;text-align:center}
@@ -197,16 +190,15 @@
   .landing .enter{width:100%;border:none;background:var(--wine);color:#fff;font-family:"Noto Sans TC",sans-serif;font-size:16px;font-weight:600;padding:16px 28px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(140,47,51,.3);min-height:56px}
   .landing .enter:active{transform:scale(.97)}
   .landing .enter-secondary{background:none;border:none;color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:14px;text-decoration:underline;cursor:pointer;padding:8px 12px;min-height:44px}
-  .landing-globe{position:absolute;top:calc(16px + var(--safe-top));right:16px;min-width:60px;height:40px;padding:0 12px;border-radius:20px;border:1.5px solid var(--gold-soft);background:var(--paper);color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
-  .landing-globe svg{width:16px;height:16px;fill:var(--wine)}
-  .landing-globe:active{transform:scale(.96)}
+  .landing-globe{position:absolute;top:calc(16px + var(--safe-top));right:16px;min-width:60px}
   .landing-footer{position:absolute;bottom:calc(16px + var(--safe-bot));left:0;right:0;display:flex;align-items:center;justify-content:center;gap:7px;font-family:"Noto Sans TC",sans-serif;font-size:11px;color:#b3a690}
 </style>
+<link rel="stylesheet" href="design-system.css">
 </head>
 <body>
 
 <div class="landing" id="landing">
-  <button class="landing-globe" id="landingGlobe" aria-label="Language">中 / EN</button>
+  <button class="landing-globe btn-secondary" id="landingGlobe" aria-label="Language">中 / EN</button>
   <svg class="art" viewBox="0 0 120 120" aria-hidden="true">
     <g fill="none" stroke-width="4">
       <circle cx="49" cy="76" r="23" stroke="#c9a96a"/>
@@ -220,10 +212,10 @@
   <div class="divider"></div>
   <div class="landing-options" id="landingOptions"></div>
   <div class="landing-footer">
-    <span>v0.0.2</span>
+    <span>@2026</span>
     <span>·</span>
     <span>Grace Hsieh</span>
-    <button class="footer-report-btn" id="contactBtnLanding" aria-label="Report / Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></button>
+    <button class="btn-tertiary" id="contactBtnLanding" aria-label="Report / Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></button>
   </div>
 </div>
 
@@ -231,13 +223,13 @@
 
 <div class="topbar">
   <div class="appbar">
-    <button class="iconbtn" id="homeBtn" aria-label="Home">
+    <button class="btn-ghost" id="homeBtn" aria-label="Home">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
     </button>
     <div class="brand"><h1 id="appTitle">HelloReady</h1></div>
     <div class="appbar-actions">
-      <button class="edit-toggle-top" id="editToggleTop" aria-label="Edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg><span class="elabel">Edit</span></button>
-      <button class="iconbtn" id="gearBtn" aria-label="Settings">
+      <button class="btn-tertiary" id="editToggleTop" aria-label="Edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg><span class="elabel">Edit</span></button>
+      <button class="btn-tertiary" id="gearBtn" aria-label="Settings">
         <svg viewBox="0 0 24 24"><path d="M19.14 12.94a7.49 7.49 0 0 0 .05-1.88l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.3 7.3 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.43h-3.84a.5.5 0 0 0-.5.43l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.18 8.84a.5.5 0 0 0 .12.64l2.03 1.58a7.49 7.49 0 0 0 0 1.88L2.3 14.52a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.39.31.6.22l2.39-.96c.49.38 1.03.7 1.62.94l.36 2.54c.04.25.25.43.5.43h3.84c.25 0 .46-.18.5-.43l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.21.09.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
       </button>
     </div>
@@ -263,10 +255,10 @@
 
 <footer>
   <div class="footer-meta">
-    <span>v0.0.2</span>
+    <span>@2026</span>
     <span>·</span>
     <span>Grace Hsieh</span>
-    <button class="footer-report-btn" id="contactBtn" aria-label="Report / Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></button>
+    <button class="btn-tertiary" id="contactBtn" aria-label="Report / Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></button>
   </div>
 </footer>
 
@@ -364,6 +356,12 @@
 <script>
 /* HelloReady — helping people communicate in unfamiliar situations. Multiple themes and languages share one engine.
    Card lines: role -> size/hierarchy, language -> font. */
+
+function trackEvent(eventName, params = {}) {
+  if (typeof gtag === 'function') {
+    gtag('event', eventName, params);
+  }
+}
 
 const ZH_KEY=[
   ["終於見到您了。","It's wonderful to finally meet you.","依次 萬德佛 圖 法奈裡 密 揪"],
@@ -725,6 +723,7 @@ async function speakNeural(text,card){
 function speak(text,card){
   if(!text)return;
   stopSpeaking();
+  trackEvent('audio_played');
   if(useNeural && rate>=0.85 && typeof puter!=='undefined' && puter.ai && puter.ai.txt2speech){ speakNeural(text,card); return; }
   speakWeb(text,card);
 }
@@ -767,6 +766,11 @@ const THEME_PROMPTS={
   general:'You translate short conversational phrases for a phrase card.',
 };
 function themeContext(){const theme=DATA.theme||'general';return THEME_PROMPTS[theme]||THEME_PROMPTS.general;}
+function zhDialect(){
+  if(voice&&voice.lang){const l=voice.lang.toLowerCase();if(l.startsWith('zh-cn')||l.includes('cmn-cn'))return 'cn';}
+  return 'tw'; // default Traditional Chinese
+}
+function zhLangCode(l){if(l==='zh')return zhDialect()==='cn'?'zh-CN':'zh-TW';return LANGMAP[l]||l;}
 async function translate(text){
   const from=DATA.nativeLang, to=DATA.targetLang;
   const key=geminiKey||DEFAULT_GKEY;
@@ -780,7 +784,7 @@ async function translateGemini(text,from,to,key){
   const model='gemini-2.5-flash-lite';
   const url='https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+encodeURIComponent(key);
   let phoneticInstruction;
-  if(to==='zh'){ phoneticInstruction='Use Traditional Chinese characters in the translation. Also write the Hanyu Pinyin of that Chinese WITH tone marks (field "phonetic").'; }
+  if(to==='zh'){ const trad=zhDialect()!=='cn'; phoneticInstruction='Use '+(trad?'Traditional':'Simplified')+' Chinese characters in the translation. Also write the Hanyu Pinyin of that Chinese WITH tone marks (field "phonetic").'; }
   else { phoneticInstruction='Also write a phonetic approximation of that '+langName(to)+' pronunciation using '+langName(from)+' characters (field "phonetic"), so a '+langName(from)+' speaker can read it aloud.'; }
   const prompt=themeContext()+' '
     +'Translate this '+langName(from)+' into natural, warm, polite '+langName(to)+'. '
@@ -796,7 +800,7 @@ async function translateGemini(text,from,to,key){
   return {translation:obj.translation||'',phonetic:obj.phonetic||'',back:obj.back||'',note:''};
 }
 async function translateMyMemory(text,from,to){
-  const lp=(LANGMAP[from]||from)+'|'+(LANGMAP[to]||to);
+  const lp=zhLangCode(from)+'|'+zhLangCode(to);
   const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text)+'&langpair='+encodeURIComponent(lp));
   if(!r.ok)throw new Error('mymemory '+r.status);
   const data=await r.json();
@@ -804,7 +808,7 @@ async function translateMyMemory(text,from,to){
   if(!tr)throw new Error('empty');
   let back='';
   try{
-    const lp2=(LANGMAP[to]||to)+'|'+(LANGMAP[from]||from);
+    const lp2=zhLangCode(to)+'|'+zhLangCode(from);
     const r2=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(tr)+'&langpair='+encodeURIComponent(lp2));
     if(r2.ok){const d2=await r2.json();back=(d2.responseData&&d2.responseData.translatedText)||'';}
   }catch(e){}
@@ -813,6 +817,7 @@ async function translateMyMemory(text,from,to){
 
 const ICON_SPEAK='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.06a7 7 0 0 1 0 13.48v2.06a9 9 0 0 0 0-17.6z"/></svg>';
 const ICON_EDIT='<svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>';
+const ICON_CHECK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
 const ICON_DEL='<svg viewBox="0 0 24 24"><path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>';
 
 function runTranslate(tb,statusEl,getNat,setTgt,setPh,onDone){
@@ -833,6 +838,7 @@ function runTranslate(tb,statusEl,getNat,setTgt,setPh,onDone){
 
 function cardEl(item){
   const c=document.createElement('div');c.className='card';
+  if(DATA.nativeLang==='en')c.classList.add('en-speaker');
   const natL=langClass(DATA.nativeLang), tgtL=langClass(DATA.targetLang), phL=phoneticLangClass();
   if(editingId===item.id){
     c.innerHTML='<div class="editform">'
@@ -856,6 +862,7 @@ function cardEl(item){
       if(!nat&&!tgt){removeItem(item.id);editingId=null;await save();render();return;}
       item.text[DATA.nativeLang]=nat;item.text[DATA.targetLang]=tgt;item.phonetic[DATA.targetLang]=ph;
       if(translatedFlag){item.auto=true;item._back=lastBack;}
+      if(item.isNew) trackEvent('phrase_added');
       delete item.isNew;
       const cur=currentLocationKey(item.id);
       if(chosenCat&&chosenCat!==cur){removeItem(item.id);placeInto(chosenCat,item);}
@@ -1016,6 +1023,7 @@ document.getElementById('modalSave').addEventListener('click',async()=>{
   it.text[DATA.nativeLang]=nat;it.text[DATA.targetLang]=tgt;it.phonetic[DATA.targetLang]=ph;
   if(addPopupTranslatedFlag){it.auto=true;it._back=addPopupLastBack;}
   delete it.isNew;
+  trackEvent('phrase_added');
   placeInto(chosenCat,it);
   await save();closeAddPopup();render();
 });
@@ -1100,6 +1108,7 @@ function setTitle(){const el=document.getElementById('appTitle');if(el)el.textCo
 
 /* ---- ui language ---- */
 function setUiLang(l){
+  trackEvent('language_changed', { language: l });
   uiLang=l;Store.save(UIKEY,l);
   document.documentElement.lang=(l==='zh'?'zh-Hant':'en');
   applyStrings();
@@ -1171,8 +1180,8 @@ document.getElementById('gkeyInput').addEventListener('input',async function(){g
 document.querySelectorAll('#uiLangSeg button').forEach(b=>{b.addEventListener('click',()=>setUiLang(b.dataset.uilang));});
 document.querySelectorAll('#neuralSeg button').forEach(b=>{b.addEventListener('click',()=>enableNeural(b.dataset.neural==='1'));});
 
-function syncEditBtn(){const b=document.getElementById('editToggleTop');if(b){b.classList.toggle('on',editMode);const lbl=b.querySelector('.elabel');if(lbl)lbl.textContent=editMode?t('done'):t('edit');}}
-function setEditMode(on){editMode=on;editingId=null;confirmId=null;secEditId=null;syncEditBtn();render();}
+function syncEditBtn(){const b=document.getElementById('editToggleTop');if(b){b.classList.toggle('on',editMode);const lbl=b.querySelector('.elabel');if(lbl)lbl.textContent=editMode?t('done'):t('edit');const svgEl=b.querySelector('svg');if(svgEl){const tpl=document.createElement('template');tpl.innerHTML=editMode?ICON_CHECK:ICON_EDIT;svgEl.replaceWith(tpl.content.firstChild);}}}
+function setEditMode(on){if(on) trackEvent('edit_mode_opened');editMode=on;editingId=null;confirmId=null;secEditId=null;syncEditBtn();render();}
 document.getElementById('editToggleTop').addEventListener('click',()=>setEditMode(!editMode));
 document.querySelector('[data-add-key]').addEventListener('click',()=>openAddPopup('key'));
 document.getElementById('addSectionBtn').addEventListener('click',async()=>{const cat=newCategory();DATA.categories.push(cat);secEditId=cat.id;await save();render();window.scrollTo(0,document.body.scrollHeight);});

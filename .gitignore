@@ -1,3 +1,4 @@
 internal/
 .DS_Store
 local-backups/
+.claude/

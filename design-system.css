@@ -1,0 +1,238 @@
+/* ============================================================
+   HelloReady Design System v1.0
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SEMANTIC COLOR TOKENS
+   Built on top of the primitive tokens in index.html :root
+   ------------------------------------------------------------ */
+:root {
+  /* Surfaces */
+  --ds-surface-base:      var(--paper);        /* Primary content surface   */
+  --ds-surface-muted:     var(--ivory);        /* Background / secondary    */
+
+  /* Content */
+  --ds-content-primary:   var(--ink);          /* Main text                 */
+  --ds-content-secondary: #7a6b58;             /* Secondary text            */
+  --ds-content-faint:     #b3a690;             /* Captions, meta            */
+
+  /* Brand */
+  --ds-brand:             var(--wine);         /* Primary action color      */
+  --ds-brand-deep:        var(--wine-deep);    /* Pressed / darker shade    */
+  --ds-accent:            var(--gold);         /* Accent / highlight        */
+  --ds-accent-soft:       var(--gold-soft);    /* Soft accent / borders     */
+
+  /* Borders */
+  --ds-border:            var(--line);         /* Default dividers          */
+  --ds-border-accent:     var(--gold-soft);    /* Accented borders          */
+
+  /* Shadow */
+  --ds-shadow-sm:   0 1px 3px var(--shadow);
+  --ds-shadow-md:   0 4px 14px rgba(80, 40, 20, .14);
+  --ds-shadow-wine: 0 2px 10px rgba(140, 47, 51, .22);
+}
+
+
+/* ------------------------------------------------------------
+   TYPOGRAPHY SCALE
+   ------------------------------------------------------------ */
+:root {
+  --ds-font-serif:   "Noto Serif TC", serif;
+  --ds-font-sans:    "Noto Sans TC", sans-serif;
+  --ds-font-display: "Cormorant Garamond", serif;
+
+  /* Size scale */
+  --ds-size-display: 22px;   /* Hero / target-language card      */
+  --ds-size-heading: 19px;   /* Section titles, brand name       */
+  --ds-size-title:   17px;   /* Card native-language line        */
+  --ds-size-body:    15px;   /* Default body copy                */
+  --ds-size-label:   13px;   /* Chips, button labels             */
+  --ds-size-caption: 11px;   /* Footer, timestamps, meta         */
+}
+
+.ds-text-display {
+  font-family: var(--ds-font-serif);
+  font-size:   var(--ds-size-display);
+  font-weight: 600;
+  color:       var(--ds-brand);
+  line-height: 1.32;
+}
+.ds-text-heading {
+  font-family: var(--ds-font-serif);
+  font-size:   var(--ds-size-heading);
+  font-weight: 700;
+  color:       var(--ds-content-primary);
+  line-height: 1.4;
+}
+.ds-text-title {
+  font-family: var(--ds-font-sans);
+  font-size:   var(--ds-size-title);
+  font-weight: 700;
+  color:       var(--ds-content-primary);
+  line-height: 1.4;
+}
+.ds-text-body {
+  font-family: var(--ds-font-sans);
+  font-size:   var(--ds-size-body);
+  font-weight: 400;
+  color:       var(--ds-content-primary);
+  line-height: 1.55;
+}
+.ds-text-label {
+  font-family: var(--ds-font-sans);
+  font-size:   var(--ds-size-label);
+  font-weight: 500;
+  color:       var(--ds-content-secondary);
+  line-height: 1.4;
+}
+.ds-text-caption {
+  font-family: var(--ds-font-sans);
+  font-size:   var(--ds-size-caption);
+  font-weight: 400;
+  color:       var(--ds-content-faint);
+  line-height: 1.4;
+}
+
+
+/* ------------------------------------------------------------
+   BUTTON COMPONENTS
+
+   Hierarchy (high → low emphasis):
+     btn-primary   — filled wine,    save / confirm actions
+     btn-secondary — outlined wine,  language toggle (中/EN)
+     btn-tertiary  — text + icon,    Edit / Feedback / Settings
+     btn-ghost     — icon-only,      Home in app bar
+   ------------------------------------------------------------ */
+
+/* Shared base — reset + common traits */
+.btn-primary,
+.btn-secondary,
+.btn-tertiary,
+.btn-ghost {
+  display:             inline-flex;
+  align-items:         center;
+  justify-content:     center;
+  gap:                 6px;
+  min-height:          44px;   /* WCAG touch target */
+  font-family:         var(--ds-font-sans);
+  cursor:              pointer;
+  border:              none;
+  background:          none;
+  text-decoration:     none;
+  white-space:         nowrap;
+  user-select:         none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .15s, color .15s, border-color .15s, transform .12s, box-shadow .15s;
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-tertiary:focus-visible,
+.btn-ghost:focus-visible {
+  outline:        2px solid var(--ds-accent);
+  outline-offset: 2px;
+}
+
+/* ---- Primary ---- */
+/* Use for: Save, Send, Confirm — the one highest-priority action per screen */
+.btn-primary {
+  background:    var(--ds-brand);
+  color:         #fff;
+  font-size:     var(--ds-size-body);
+  font-weight:   600;
+  padding:       0 24px;
+  border-radius: 22px;
+  border:        1.5px solid transparent;
+  box-shadow:    var(--ds-shadow-wine);
+}
+.btn-primary:active {
+  background:  var(--ds-brand-deep);
+  box-shadow:  none;
+  transform:   scale(.97);
+}
+.btn-primary:disabled {
+  opacity:        .5;
+  pointer-events: none;
+}
+
+/* ---- Secondary ---- */
+/* Use for: 中/EN toggle — outlined, same brand color, no fill */
+.btn-secondary {
+  background:    transparent;
+  color:         var(--ds-brand);
+  font-size:     var(--ds-size-label);
+  font-weight:   600;
+  padding:       0 16px;
+  border-radius: 22px;
+  border:        1.5px solid var(--ds-brand);
+}
+.btn-secondary svg {
+  width:  16px;
+  height: 16px;
+  fill:   currentColor;
+}
+.btn-secondary:active {
+  background:   var(--ds-brand);
+  color:        #fff;
+  border-color: var(--ds-brand);
+  transform:    scale(.96);
+}
+.btn-secondary:disabled {
+  opacity:        .5;
+  pointer-events: none;
+}
+
+/* ---- Tertiary ---- */
+/* Use for: Edit, Feedback, Settings — low-emphasis, icon + label */
+.btn-tertiary {
+  background:    transparent;
+  color:         var(--ds-content-secondary);
+  font-size:     var(--ds-size-label);
+  font-weight:   500;
+  padding:       0 10px;
+  border-radius: 10px;
+  border:        1.5px solid transparent;
+}
+.btn-tertiary svg {
+  width:  17px;
+  height: 17px;
+  fill:   currentColor;
+}
+.btn-tertiary:active {
+  background: var(--ds-surface-muted);
+  color:      var(--ds-brand);
+  transform:  scale(.95);
+}
+.btn-tertiary:disabled {
+  opacity:        .45;
+  pointer-events: none;
+}
+/* Active/on state — used by Edit toggle when editing mode is on */
+.btn-tertiary.on {
+  background:   var(--ds-brand);
+  color:        #fff;
+  border-color: var(--ds-brand);
+}
+
+/* ---- Ghost ---- */
+/* Use for: Home icon in app bar — icon-only, transparent, no border */
+.btn-ghost {
+  background:    transparent;
+  color:         var(--ds-brand);
+  width:         44px;
+  height:        44px;
+  padding:       0;
+  flex-shrink:   0;
+  border-radius: 10px;
+  border:        none;
+}
+.btn-ghost svg {
+  width:  22px;
+  height: 22px;
+  fill:   currentColor;
+}
+.btn-ghost:active {
+  background: var(--ds-surface-muted);
+  transform:  scale(.91);
+}
