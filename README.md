@@ -33,7 +33,7 @@ The first phrase pack focuses on weddings, helping non-native speakers quickly l
 
 ## Demo
 
-Coming soon via GitHub Pages.
+🔗 Live Site: https://helloready.app
 
 ## License
 
