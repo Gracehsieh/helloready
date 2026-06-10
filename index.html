@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
-<title>婚禮對話卡 · Wedding Phrase Card</title>
+<title>HelloReady · Wedding Phrase Card</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme:light only;
@@ -32,38 +32,33 @@
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
 
   .topbar{position:sticky;top:0;z-index:40;background:rgba(250,244,234,.94);backdrop-filter:saturate(1.4) blur(8px);-webkit-backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line);padding-top:var(--safe-top)}
-  .appbar{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 14px}
+  .appbar{display:flex;align-items:center;gap:10px;height:60px;padding:0 14px}
   .appbar .brand{display:flex;align-items:baseline;gap:8px;min-width:0;flex:1}
   .appbar .brand h1{font-family:"Noto Serif TC",serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .appbar .brand .sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:13px;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .gear{flex:0 0 auto;width:44px;height:44px;border-radius:10px;border:1.5px solid var(--gold-soft);background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--wine)}
-  .gear svg{width:20px;height:20px;fill:var(--wine)}
-  .gear:active{transform:scale(.94)}
+  .iconbtn{flex:0 0 auto;width:44px;height:44px;border-radius:10px;border:1.5px solid var(--gold-soft);background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--wine)}
+  .iconbtn svg{width:20px;height:20px;fill:var(--wine)}
+  .iconbtn:active{transform:scale(.94)}
   .appbar-actions{display:flex;align-items:center;gap:10px}
-  .addbtn{display:flex;align-items:center;gap:6px;height:46px;padding:0 16px;border-radius:14px;border:1.5px solid var(--gold-soft);background:var(--paper);color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:600;cursor:pointer}
-  .addbtn svg{width:18px;height:18px;fill:var(--wine)}
-  .addbtn:active{transform:scale(.96)}
-
-  .chipbar{display:flex;gap:8px;overflow-x:auto;padding:16px 14px 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .editbar{display:none}
   .edit-toggle-top{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--wine);background:var(--paper);color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:600;padding:0 14px;border-radius:10px;cursor:pointer;height:44px;transition:.16s}
   .edit-toggle-top svg{width:18px;height:18px;fill:currentColor}
   .edit-toggle-top.on{background:var(--wine);color:#fff;border-color:var(--wine)}
   .edit-toggle-top:active{transform:scale(.97)}
+
+  .chipbar{display:flex;gap:8px;overflow-x:auto;padding:16px 14px 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .chipbar::-webkit-scrollbar{display:none}
   .chip{flex:0 0 auto;min-height:38px;display:flex;align-items:center;border:1.5px solid var(--gold-soft);background:var(--paper);color:#8a6f48;font-family:"Noto Sans TC",sans-serif;font-size:14px;font-weight:500;padding:6px 15px;border-radius:30px;cursor:pointer;white-space:nowrap;transition:.16s}
   .chip:active{transform:scale(.96)}
   .chip.active{background:var(--wine);border-color:var(--wine);color:#fff;box-shadow:0 2px 8px rgba(140,47,51,.25)}
 
   .intro{text-align:center;padding:16px 24px 6px}
-  .intro p{font-size:13.5px;color:#7a6b58;max-width:330px;margin:0 auto;line-height:1.55}
+  .intro p{font-size:13.5px;color:#7a6b58;max-width:340px;margin:0 auto;line-height:1.55}
   .intro .em{color:var(--wine);font-weight:500}
 
   section{padding:4px 14px 2px;scroll-margin-top:118px}
   #block-key{scroll-margin-top:118px}
-  .sec-title{font-family:"Noto Serif TC",serif;font-size:calc(19px * var(--fs));font-weight:700;color:var(--wine-deep);margin:24px 4px 14px;display:flex;align-items:center;gap:10px}
-  .sec-title .en{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:calc(14px * var(--fs));color:var(--gold)}
-  .sec-title .sechead-actions{margin-left:auto;display:none;gap:6px}
+  .sec-title{font-size:calc(19px * var(--fs));font-weight:700;color:var(--wine-deep);margin:24px 4px 14px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .sec-title .sub2{font-weight:500;font-size:calc(14px * var(--fs));color:var(--gold)}
+  .sec-title .sechead-actions{margin-left:auto;display:none;gap:6px;align-self:center}
   body.editing .sec-title .sechead-actions{display:flex}
   .sec-sub{font-size:12.5px;color:#8a7a66;margin:0 4px 10px}
 
@@ -74,9 +69,15 @@
   .card.speaking{border-color:var(--gold);box-shadow:0 4px 18px rgba(176,133,68,.32)}
   .card.speaking::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold)}
   .card .txt{flex:1;min-width:0}
-  .card .zh{font-family:"Noto Serif TC",serif;font-size:calc(17px * var(--fs));font-weight:700;color:var(--ink);line-height:1.4}
-  .card .en{font-family:"Cormorant Garamond",serif;font-size:calc(22px * var(--fs));color:var(--wine);margin-top:9px;line-height:1.3;font-weight:600}
-  .card .ph{font-family:"Noto Sans TC",sans-serif;font-size:calc(13px * var(--fs));color:#847b66;margin-top:9px;line-height:1.3;letter-spacing:1px}
+
+  .line-native{font-size:calc(17px * var(--fs));font-weight:700;color:var(--ink);line-height:1.4}
+  .line-target{font-size:calc(22px * var(--fs));font-weight:600;color:var(--wine);margin-top:9px;line-height:1.32}
+  .line-phonetic{font-size:calc(13px * var(--fs));color:#847b66;margin-top:9px;line-height:1.3}
+  .lang-zh{font-family:"Noto Serif TC",serif}
+  .lang-en{font-family:"Cormorant Garamond",serif}
+  .lang-pinyin{font-family:"Noto Sans TC",system-ui,sans-serif;letter-spacing:.4px}
+  .lang-zhsans{font-family:"Noto Sans TC",sans-serif;letter-spacing:1px}
+
   .speaker{flex-shrink:0;width:50px;height:50px;border-radius:50%;background:var(--ivory);border:1.5px solid var(--gold-soft);display:flex;align-items:center;justify-content:center;transition:.18s}
   .card.speaking .speaker{background:var(--gold);border-color:var(--gold);animation:pulse 1.1s ease-in-out infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(176,133,68,.45)}50%{box-shadow:0 0 0 7px rgba(176,133,68,0)}}
@@ -95,8 +96,8 @@
   .editform{flex:1;display:flex;flex-direction:column;gap:8px}
   .editform label{font-size:11px;color:#9a8a76;margin-bottom:-4px}
   .editform input{font-family:"Noto Sans TC",sans-serif;font-size:16px;color:var(--ink);border:1.5px solid var(--gold-soft);border-radius:10px;padding:11px 12px;width:100%;background:#fff}
-  .editform input.en-input{font-family:"Cormorant Garamond",serif;color:var(--wine)}
-  .editform input.ph-input{font-size:14px;color:#8a7a66;letter-spacing:1px}
+  .editform input.in-target{color:var(--wine)}
+  .editform input.in-ph{font-size:14px;color:#8a7a66}
   .editform input:focus{outline:none;border-color:var(--wine)}
   .editform select{font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);border:1.5px solid var(--gold-soft);border-radius:10px;padding:11px 38px 11px 12px;width:100%;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'12'%20height%3D'12'%20viewBox%3D'0%200%2012%2012'%3E%3Cpath%20d%3D'M3%204.5l3%203%203-3'%20fill%3D'none'%20stroke%3D'%23b08544'%20stroke-width%3D'1.6'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px;-webkit-appearance:none;-moz-appearance:none;appearance:none;min-height:46px}
   .editform select:focus{outline:none;border-color:var(--wine)}
@@ -124,7 +125,14 @@
   body.editing .footer-tools{display:block}
   .add-section-btn{border:1.5px dashed var(--wine);background:transparent;color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:500;padding:0 24px;border-radius:14px;cursor:pointer;width:100%;min-height:44px}
 
-  footer{text-align:center;font-size:11px;color:#b3a690;padding:26px 24px 0;font-family:"Cormorant Garamond",serif;font-style:italic}
+  footer{text-align:center;font-size:11px;color:#b3a690;padding:26px 24px 18px;font-family:"Cormorant Garamond",serif;font-style:italic}
+  .footer-meta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;font-style:normal;font-family:"Noto Sans TC",sans-serif;font-size:11px;color:#b3a690}
+  .footer-report-btn{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:#b3a690;transition:color .15s;padding:4px;flex-shrink:0}
+  .footer-report-btn:hover,.footer-report-btn:active{color:var(--wine)}
+  .footer-report-btn svg{width:15px;height:15px;fill:currentColor}
+  .editform textarea{font-family:"Noto Sans TC",sans-serif;font-size:15px;color:var(--ink);border:1.5px solid var(--gold-soft);border-radius:10px;padding:11px 12px;width:100%;background:#fff;resize:vertical;min-height:90px}
+  .editform textarea:focus{outline:none;border-color:var(--wine)}
+  #contactStatus{font-size:12px;color:#8a7257;margin-top:4px;min-height:16px;text-align:center}
   .warnbar{display:none;background:var(--wine);color:#fff;font-size:12.5px;text-align:center;padding:10px 16px;line-height:1.4}
 
   .confirm-box{flex:1;display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -153,18 +161,15 @@
   .preview-btn{flex:0 0 auto;padding:0 18px;color:var(--gold);min-width:96px}
   .voice-row{display:flex;gap:8px;align-items:stretch}
   .voice-row select{flex:1}
-  .sheet-btn.edit.on{background:var(--ink);border-color:var(--ink);color:#fff}
-  .sheet-btn.full{width:100%}
   .reset-link{display:block;width:100%;text-align:center;background:none;border:none;color:#b3a690;font-size:13px;text-decoration:underline;cursor:pointer;padding:14px 8px 2px;min-height:44px}
   .refresh-link{display:block;width:100%;text-align:center;background:none;border:none;color:var(--wine);font-size:12.5px;text-decoration:underline;cursor:pointer;padding:8px;min-height:40px}
   .sheet .tip{font-size:11.5px;color:#a89a84;margin-top:7px;line-height:1.45}
 
-  /* AI-translated marker (only visible in edit mode) */
   .auto-tag{display:none;margin-top:6px;background:#f3e7cf;color:#9a6b1f;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:10px;letter-spacing:.5px}
   body.editing .auto-tag{display:inline-block}
 
-  /* add popup modal */
   .modal-overlay{position:fixed;inset:0;background:rgba(43,32,24,.45);z-index:70;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}
+  #contactModal{z-index:110}
   .modal-overlay.open{opacity:1;pointer-events:auto}
   .modal{background:var(--paper);border-radius:20px;padding:22px 20px 20px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(80,40,20,.28);transform:translateY(20px);transition:transform .22s cubic-bezier(.2,.8,.2,1)}
   .modal-overlay.open .modal{transform:translateY(0)}
@@ -173,22 +178,26 @@
   .modal-close{width:32px;height:32px;border:none;background:none;cursor:pointer;color:#9a8a76;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:8px}
   .modal-close:active{background:var(--ivory)}
 
-  /* landing / splash */
   .landing{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 32%, #fff7ec, var(--ivory));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;transition:opacity .55s ease, visibility .55s}
   .landing.hide{opacity:0;visibility:hidden;pointer-events:none}
   .landing .art{width:144px;height:144px;margin-bottom:2px}
   .landing h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:38px;color:var(--ink);letter-spacing:.5px;margin-top:6px}
-  .landing .tag-en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:27px;color:var(--wine);margin-top:20px;letter-spacing:.5px}
-  .landing .tag-zh{font-family:"Noto Serif TC",serif;font-size:17px;color:#6d5c46;margin-top:18px;letter-spacing:3px}
-  .landing .divider{width:54px;height:2px;background:var(--gold);opacity:.6;margin:22px auto 0}
-  .landing .langs{font-family:"Cormorant Garamond",serif;font-size:14px;color:var(--gold);letter-spacing:4px;margin-top:16px;text-transform:uppercase}
-  .landing .enter{margin-top:30px;border:none;background:var(--wine);color:#fff;font-family:"Noto Sans TC",sans-serif;font-size:16px;font-weight:600;padding:15px 40px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(140,47,51,.3);min-height:54px}
+  .landing .tag{font-family:"Noto Serif TC",serif;font-size:17px;color:#6d5c46;margin-top:18px;letter-spacing:2px;max-width:300px}
+  .landing .divider{width:54px;height:2px;background:var(--gold);opacity:.6;margin:24px auto 4px}
+  .landing-options{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:26px;width:100%;max-width:340px}
+  .landing .enter{width:100%;border:none;background:var(--wine);color:#fff;font-family:"Noto Sans TC",sans-serif;font-size:16px;font-weight:600;padding:16px 28px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(140,47,51,.3);min-height:56px}
   .landing .enter:active{transform:scale(.97)}
+  .landing .enter-secondary{background:none;border:none;color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:14px;text-decoration:underline;cursor:pointer;padding:8px 12px;min-height:44px}
+  .landing-globe{position:absolute;top:calc(16px + var(--safe-top));right:16px;min-width:60px;height:40px;padding:0 12px;border-radius:20px;border:1.5px solid var(--gold-soft);background:var(--paper);color:var(--wine);font-family:"Noto Sans TC",sans-serif;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
+  .landing-globe svg{width:16px;height:16px;fill:var(--wine)}
+  .landing-globe:active{transform:scale(.96)}
+  .landing-footer{position:absolute;bottom:calc(16px + var(--safe-bot));left:0;right:0;display:flex;align-items:center;justify-content:center;gap:7px;font-family:"Noto Sans TC",sans-serif;font-size:11px;color:#b3a690}
 </style>
 </head>
 <body>
 
 <div class="landing" id="landing">
+  <button class="landing-globe" id="landingGlobe" aria-label="Language">中 / EN</button>
   <svg class="art" viewBox="0 0 120 120" aria-hidden="true">
     <g fill="none" stroke-width="4">
       <circle cx="49" cy="76" r="23" stroke="#c9a96a"/>
@@ -198,22 +207,28 @@
     <path d="M90 48 l2.2 5.6 5.6 2.2 -5.6 2.2 -2.2 5.6 -2.2 -5.6 -5.6 -2.2 5.6 -2.2 z" fill="#c9a96a"/>
   </svg>
   <h1>HelloReady</h1>
-  <div class="tag-zh">關鍵時刻，知道怎麼說。</div>
+  <div class="tag" id="landingTag"></div>
   <div class="divider"></div>
-  <div class="langs">中文 · English</div>
-  <button class="enter" id="enterBtn">進入婚宴場景</button>
+  <div class="landing-options" id="landingOptions"></div>
+  <div class="landing-footer">
+    <span>v0.0.2</span>
+    <span>·</span>
+    <span>Grace Hsieh</span>
+    <button class="footer-report-btn" id="contactBtnLanding" aria-label="Report / Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></button>
+  </div>
 </div>
 
-<div id="warnbar" class="warnbar">此瀏覽器可能不支援語音播放，建議用手機的 Safari 或 Chrome 開啟。</div>
+<div id="warnbar" class="warnbar"></div>
 
 <div class="topbar">
   <div class="appbar">
-    <div class="brand">
-      <h1 id="appTitle">婚禮對話卡</h1>
-    </div>
+    <button class="iconbtn" id="homeBtn" aria-label="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    </button>
+    <div class="brand"><h1 id="appTitle">HelloReady</h1></div>
     <div class="appbar-actions">
-      <button class="edit-toggle-top" id="editToggleTop" aria-label="編輯"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg><span class="elabel">編輯</span></button>
-      <button class="gear" id="gearBtn" aria-label="設定">
+      <button class="edit-toggle-top" id="editToggleTop" aria-label="Edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg><span class="elabel">Edit</span></button>
+      <button class="iconbtn" id="gearBtn" aria-label="Settings">
         <svg viewBox="0 0 24 24"><path d="M19.14 12.94a7.49 7.49 0 0 0 .05-1.88l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.3 7.3 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.43h-3.84a.5.5 0 0 0-.5.43l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.18 8.84a.5.5 0 0 0 .12.64l2.03 1.58a7.49 7.49 0 0 0 0 1.88L2.3 14.52a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.39.31.6.22l2.39-.96c.49.38 1.03.7 1.62.94l.36 2.54c.04.25.25.43.5.43h3.84c.25 0 .46-.18.5-.43l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.21.09.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
       </button>
     </div>
@@ -221,93 +236,127 @@
   <div class="chipbar" id="chipbar"></div>
 </div>
 
-<div class="intro">
-  <p>點任何一句，手機會幫您唸出來。<span class="em">再點一下會重唸。</span>下方小字是近似讀音。</p>
-</div>
+<div class="intro"><p id="introText"></p></div>
 
 <div class="key-wrap" id="block-key" data-spy>
-  <span class="badge">只要記這六句</span>
-  <h2>給雙方父母的萬用句</h2>
-  <p class="note">緊張的話，記住下面六句就很夠用了。</p>
+  <span class="badge" id="keyBadge"></span>
+  <h2 id="keyTitle"></h2>
+  <p class="note" id="keyNote"></p>
   <div id="keyList"></div>
-  <button class="add-row" data-add-key="1">＋ 新增萬用句</button>
+  <button class="add-row" data-add-key="1" id="addKeyBtn"></button>
 </div>
 
 <div id="sections"></div>
 
 <div class="footer-tools">
-  <button class="add-section-btn" id="addSectionBtn">＋ 新增一個分類</button>
+  <button class="add-section-btn" id="addSectionBtn"></button>
 </div>
 
-<footer>Wishing them a lifetime of happiness ·  祝幸福美滿</footer>
+<footer>
+  <div class="footer-meta">
+    <span>v0.0.2</span>
+    <span>·</span>
+    <span>Grace Hsieh</span>
+    <button class="footer-report-btn" id="contactBtn" aria-label="Report / Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></button>
+  </div>
+</footer>
 
-<div class="modal-overlay" id="addModal" role="dialog" aria-modal="true" aria-label="新增句子">
+<div class="modal-overlay" id="addModal" role="dialog" aria-modal="true">
   <div class="modal">
     <div class="modal-header">
-      <h3>新增句子</h3>
-      <button class="modal-close" id="modalClose" aria-label="關閉">✕</button>
+      <h3 id="modalTitle"></h3>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
     </div>
     <div class="editform">
-      <label>中文</label>
-      <input class="zh-input" id="modal-zh" placeholder="輸入中文">
-      <button type="button" class="translate-btn" id="modalTrBtn">✨ 翻譯成英文（自動填英文＋讀音）</button>
+      <label id="modalNatLabel"></label>
+      <input class="in-native" id="modal-nat">
+      <button type="button" class="translate-btn" id="modalTrBtn"></button>
       <div class="tr-status" id="modalTrStatus"></div>
-      <label>English</label>
-      <input class="en-input" id="modal-en" placeholder="Type the English">
-      <label>近似讀音（選填）</label>
-      <input class="ph-input" id="modal-ph" placeholder="例如：三Q 佛 ...">
-      <label>分類 Category</label>
+      <label id="modalTgtLabel"></label>
+      <input class="in-target" id="modal-tgt">
+      <label id="modalPhLabel"></label>
+      <input class="in-ph" id="modal-ph">
+      <label id="modalCatLabel"></label>
       <select class="cat-input" id="modal-cat"></select>
       <div class="form-btns">
-        <button class="btn btn-save" id="modalSave">儲存</button>
-        <button class="btn btn-cancel" id="modalCancel">取消</button>
+        <button class="btn btn-save" id="modalSave"></button>
+        <button class="btn btn-cancel" id="modalCancel"></button>
       </div>
     </div>
   </div>
 </div>
 
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="contactModalTitle"></h3>
+      <button class="modal-close" id="contactModalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="editform">
+      <label id="contactNameLabel"></label>
+      <input id="contact-name" type="text">
+      <label id="contactEmailLabel"></label>
+      <input id="contact-email" type="email">
+      <label id="contactMsgLabel"></label>
+      <textarea id="contact-message" rows="4"></textarea>
+      <div class="form-btns">
+        <button class="btn btn-save" id="contactSend"></button>
+        <button class="btn btn-cancel" id="contactCancelBtn"></button>
+      </div>
+      <div id="contactStatus"></div>
+    </div>
+  </div>
+</div>
+
 <div class="sheet-overlay" id="sheetOverlay"></div>
-<div class="sheet" id="settingsSheet" role="dialog" aria-label="設定" aria-modal="true">
+<div class="sheet" id="settingsSheet" role="dialog" aria-modal="true">
   <div class="sheet-handle"></div>
-  <h3>設定</h3>
+  <h3 id="setTitle"></h3>
   <div class="grp">
-    <div class="grp-label">字體大小 <span style="font-weight:400;color:#b3a690">Text size</span></div>
+    <div class="grp-label" id="lblUiLang"></div>
+    <div class="seg" id="uiLangSeg">
+      <button data-uilang="zh">中文</button><button data-uilang="en">English</button>
+    </div>
+  </div>
+  <div class="grp">
+    <div class="grp-label" id="lblTextSize"></div>
     <div class="seg fs-seg" id="fsSeg">
-      <button data-fs="0.9">小</button><button data-fs="1" class="active">標準</button><button data-fs="1.18">大</button><button data-fs="1.4">特大</button>
+      <button data-fs="0.9"></button><button data-fs="1" class="active"></button><button data-fs="1.18"></button><button data-fs="1.4"></button>
     </div>
   </div>
   <div class="grp">
-    <div class="grp-label">聲音 <span style="font-weight:400;color:#b3a690">Voice</span></div>
+    <div class="grp-label" id="lblVoice"></div>
     <div class="voice-row">
-      <select id="voiceSelect" aria-label="選擇聲音"></select>
-      <button class="sheet-btn preview-btn" id="voicePreview">▶ 試聽</button>
+      <select id="voiceSelect" aria-label="Voice"></select>
+      <button class="sheet-btn preview-btn" id="voicePreview"></button>
     </div>
-    <p class="tip">⭐ 的聲音比較自然。注意：iPhone 的 Siri／部分進階語音不一定能給網頁使用。</p>
-    <button class="refresh-link" id="voiceRefresh">↻ 剛下載了新語音？點此重新整理清單</button>
+    <p class="tip" id="voiceTip"></p>
+    <button class="refresh-link" id="voiceRefresh"></button>
   </div>
   <div class="grp">
-    <div class="grp-label">語速 <span style="font-weight:400;color:#b3a690">Speed</span></div>
-    <div class="seg"><button data-rate="0.85" id="btnNormal" class="active">正常</button><button data-rate="0.6" id="btnSlow">🐢 慢速</button></div>
+    <div class="grp-label" id="lblNeural"></div>
+    <div class="seg" id="neuralSeg">
+      <button data-neural="0" class="active"></button><button data-neural="1"></button>
+    </div>
+    <p class="tip" id="neuralTip"></p>
   </div>
   <div class="grp">
-    <div class="grp-label">翻譯（AI，選填）<span style="font-weight:400;color:#b3a690">AI translate</span></div>
-    <input id="gkeyInput" type="password" autocomplete="off" placeholder="貼上免費的 Google Gemini 金鑰">
-    <p class="tip">編輯時可用 AI 把中文翻成英文並自動產生讀音。若內建的共用額度用完，請在此貼上自己的免費 Gemini 金鑰（Google AI Studio 免費取得、免信用卡）。金鑰只存在這支裝置、不會上傳，也不會放進網頁檔。留空則用基本翻譯（只有英文、沒有讀音）。</p>
+    <div class="grp-label" id="lblSpeed"></div>
+    <div class="seg"><button data-rate="0.85" id="btnNormal" class="active"></button><button data-rate="0.6" id="btnSlow"></button></div>
   </div>
-  <button class="reset-link" id="resetBtn">恢復成原本的內容</button>
+  <div class="grp">
+    <div class="grp-label" id="lblAi"></div>
+    <input id="gkeyInput" type="password" autocomplete="off">
+    <p class="tip" id="aiTip"></p>
+  </div>
+  <button class="reset-link" id="resetBtn"></button>
 </div>
 
 <script>
-/* =========================================================
-   CONTENT PACK (future-ready). A pack = theme + categories.
-   Phrase text is keyed by language code, so other language
-   pairs and themes (dining, shopping...) reuse this shape.
-   Defaults below are authored as [native, target, reading].
-   ========================================================= */
-const PACK_META = { id:'wedding', theme:'wedding', nativeLang:'zh', targetLang:'en',
-  title:{ zh:'婚禮對話卡', en:'Wedding Phrase Card' } };
+/* HelloReady — helping people communicate in unfamiliar situations. Multiple themes and languages share one engine.
+   Card lines: role -> size/hierarchy, language -> font. */
 
-const KEY_DEFAULT = [
+const ZH_KEY=[
   ["終於見到您了。","It's wonderful to finally meet you.","依次 萬德佛 圖 法奈裡 密 揪"],
   ["我們聽過很多關於您的好話。","We've heard many wonderful things about you.","屋夫 賀德 妹妮 萬德佛 性斯 阿包 揪"],
   ["謝謝您養育了這麼棒的兒子/女兒。","Thank you for raising such a wonderful son/daughter.","三Q 佛 瑞辛 薩取 阿 萬德佛 桑/都特"],
@@ -315,7 +364,7 @@ const KEY_DEFAULT = [
   ["希望以後常常見面。","We hope to see each other often.","屋 厚普 圖 西 一取 阿惹 歐分"],
   ["讓我們一起祝福他們幸福快樂。","Let's wish them a happy life together.","累次 維許 樂母 阿 哈皮 賴夫 圖蓋惹"],
 ];
-const SECTIONS_DEFAULT = [
+const ZH_SECTIONS=[
   { t:"簡單用語", e:"Just the basics", sub:"給最緊張、只想說幾個字的家人。", rows:[
     ["很高興認識您。","Nice to meet you.","耐斯 圖 密 揪"],
     ["謝謝。","Thank you.","三Q"],
@@ -387,13 +436,180 @@ const SECTIONS_DEFAULT = [
   ]},
 ];
 
-/* ===== storage keys ===== */
-const PKEY='weddingCard:pack:v2';      // new pack-shaped data
-const DKEY='weddingCard:data:v1';      // legacy data (migrated if found)
-const VKEY='weddingCard:voice:v1';
+const EN_KEY=[
+  ["It's so good to finally meet you.","終於見到您了，很高興認識您。","Zhōngyú jiàndào nín le, hěn gāoxìng rènshi nín."],
+  ["We've been looking forward to today.","我們非常期待今天。","Wǒmen fēicháng qídài jīntiān."],
+  ["Thank you for raising such a wonderful son/daughter.","謝謝您養育了這麼棒的兒子／女兒。","Xièxie nín yǎngyù le zhème bàng de érzi／nǚ'ér."],
+  ["We're happy to become one family.","我們很高興成為一家人。","Wǒmen hěn gāoxìng chéngwéi yìjiārén."],
+  ["We hope to see each other often.","希望以後常常見面。","Xīwàng yǐhòu chángcháng jiànmiàn."],
+  ["Let's wish them a happy life together.","讓我們一起祝福他們幸福快樂。","Ràng wǒmen yìqǐ zhùfú tāmen xìngfú kuàilè."],
+];
+const EN_SECTIONS=[
+  { t:"Just the basics", e:"簡單用語", sub:"When you only want to say a few words.", rows:[
+    ["Nice to meet you.","很高興認識您。","Hěn gāoxìng rènshi nín."],
+    ["Thank you.","謝謝。","Xièxie."],
+    ["Congratulations!","恭喜！","Gōngxǐ!"],
+    ["Cheers!","乾杯！","Gānbēi!"],
+    ["Beautiful!","真漂亮！","Zhēn piàoliang!"],
+    ["Wonderful!","太棒了！","Tài bàng le!"],
+    ["I'm very happy.","我很開心。","Wǒ hěn kāixīn."],
+    ["Let's take a picture!","讓我們拍照吧！","Ràng wǒmen pāizhào ba!"],
+  ]},
+  { t:"Glad to meet you", e:"表達開心的心情", rows:[
+    ["We are so happy to meet you today.","我們真的很高興今天見到您。","Wǒmen zhēnde hěn gāoxìng jīntiān jiàndào nín."],
+    ["It's wonderful to finally meet you!","終於見到您了！","Zhōngyú jiàndào nín le!"],
+    ["We've heard many wonderful things about you.","我們聽過很多關於您的好話。","Wǒmen tīngguo hěnduō guānyú nín de hǎohuà."],
+    ["Today is very special for us.","今天對我們來說很特別。","Jīntiān duì wǒmen láishuō hěn tèbié."],
+    ["We've been looking forward to today.","我們非常期待今天。","Wǒmen fēicháng qídài jīntiān."],
+    ["It's so nice to meet you.","能見到您真是太好了。","Néng jiàndào nín zhēnshì tài hǎo le."],
+  ]},
+  { t:"Becoming one family", e:"成為一家人", rows:[
+    ["Starting today, we're one family.","從今天起我們就是一家人了。","Cóng jīntiān qǐ wǒmen jiùshì yìjiārén le."],
+    ["We're happy to become family.","很高興能成為親家。","Hěn gāoxìng néng chéngwéi qìngjia."],
+    ["We hope to spend more time together in the future.","希望未來有更多相聚的機會。","Xīwàng wèilái yǒu gèngduō xiāngjù de jīhuì."],
+    ["We hope to see each other often.","希望以後常常見面。","Xīwàng yǐhòu chángcháng jiànmiàn."],
+    ["You're always welcome to visit us.","歡迎隨時來找我們。","Huānyíng suíshí lái zhǎo wǒmen."],
+    ["We hope to host you someday.","希望有機會招待您。","Xīwàng yǒu jīhuì zhāodài nín."],
+  ]},
+  { t:"About the couple", e:"關於新人", rows:[
+    ["Thank you for raising such a wonderful son.","謝謝您養育了這麼棒的兒子。","Xièxie nín yǎngyù le zhème bàng de érzi."],
+    ["Thank you for raising such a wonderful daughter.","謝謝您養育了這麼棒的女兒。","Xièxie nín yǎngyù le zhème bàng de nǚ'ér."],
+    ["We're happy they found each other.","我們很高興他們找到了彼此。","Wǒmen hěn gāoxìng tāmen zhǎodào le bǐcǐ."],
+    ["They are very happy together.","他們在一起很幸福。","Tāmen zài yìqǐ hěn xìngfú."],
+    ["We're very proud of them.","我們為他們感到驕傲。","Wǒmen wèi tāmen gǎndào jiāo'ào."],
+    ["We wish them a lifetime of happiness.","我們祝福他們永遠幸福。","Wǒmen zhùfú tāmen yǒngyuǎn xìngfú."],
+  ]},
+  { t:"Saying thank you", e:"表達感謝", rows:[
+    ["Thank you for being here today.","謝謝您今天的到來。","Xièxie nín jīntiān de dàolái."],
+    ["Thank you for all your support.","謝謝您一路上的支持。","Xièxie nín yílùshàng de zhīchí."],
+    ["We are very grateful.","我們非常感激。","Wǒmen fēicháng gǎnjī."],
+    ["It's wonderful to celebrate together.","今天能和您一起慶祝真好。","Jīntiān néng hé nín yìqǐ qìngzhù zhēn hǎo."],
+    ["Thank you for being part of this day.","謝謝您成為這一天的一部分。","Xièxie nín chéngwéi zhè yìtiān de yíbùfen."],
+  ]},
+  { t:"About the trip", e:"旅行相關", rows:[
+    ["How was your trip?","您旅途還順利嗎？","Nín lǚtú hái shùnlì ma?"],
+    ["When did you arrive?","您是什麼時候到的？","Nín shì shénme shíhou dào de?"],
+    ["Do you like it here?","您喜歡這裡嗎？","Nín xǐhuan zhèlǐ ma?"],
+    ["Have you had a chance to explore the area?","有機會去附近走走嗎？","Yǒu jīhuì qù fùjìn zǒuzou ma?"],
+    ["I hope you're enjoying your visit.","希望您這次玩得開心。","Xīwàng nín zhècì wán de kāixīn."],
+  ]},
+  { t:"At the wedding", e:"婚禮當天", rows:[
+    ["Are you enjoying the wedding?","您喜歡今天的婚禮嗎？","Nín xǐhuan jīntiān de hūnlǐ ma?"],
+    ["It's such a beautiful day.","今天真是美好的一天。","Jīntiān zhēnshì měihǎo de yìtiān."],
+    ["The couple looks so happy.","新人看起來真幸福。","Xīnrén kànqǐlái zhēn xìngfú."],
+    ["The atmosphere is wonderful today.","今天的氣氛真好。","Jīntiān de qìfēn zhēn hǎo."],
+    ["I love the decorations today.","我很喜歡今天的佈置。","Wǒ hěn xǐhuan jīntiān de bùzhì."],
+  ]},
+  { t:"About the food", e:"食物", rows:[
+    ["Have you had something to eat?","您吃過了嗎？","Nín chīguo le ma?"],
+    ["Are you enjoying the food?","您喜歡今天的餐點嗎？","Nín xǐhuan jīntiān de cāndiǎn ma?"],
+    ["What's your favorite dish?","您最喜歡哪一道菜？","Nín zuì xǐhuan nǎ yídào cài?"],
+    ["Please enjoy more food.","請多吃一點。","Qǐng duō chī yìdiǎn."],
+    ["I hope you enjoy the meal.","希望您喜歡這些菜色。","Xīwàng nín xǐhuan zhèxiē càisè."],
+  ]},
+  { t:"Friendly chatter", e:"輕鬆聊天", rows:[
+    ["We finally get to meet!","我們終於見面了！","Wǒmen zhōngyú jiànmiàn le!"],
+    ["Everyone seems so happy today.","今天大家都好開心。","Jīntiān dàjiā dōu hǎo kāixīn."],
+    ["I love your outfit.","我很喜歡您的衣服。","Wǒ hěn xǐhuan nín de yīfu."],
+    ["You look wonderful today.","您今天看起來很棒。","Nín jīntiān kànqǐlái hěn bàng."],
+    ["Let's take a photo together!","我們來拍張照片吧！","Wǒmen lái pāi zhāng zhàopiàn ba!"],
+  ]},
+];
+
+const PACKS={
+  zh:{ id:'zh', nativeLang:'zh', targetLang:'en', title:{zh:'婚禮情境',en:'Wedding Theme'},
+       key:ZH_KEY, sections:ZH_SECTIONS,
+       entry:{ zh:'聊英文', en:'Chat in Chinese' } },
+  en:{ id:'en', nativeLang:'en', targetLang:'zh', title:{zh:'婚禮情境',en:'Wedding Theme'},
+       key:EN_KEY, sections:EN_SECTIONS,
+       entry:{ en:'Chat in Chinese', zh:'聊英文' } },
+};
+
+/* ---- UI strings ---- */
+const STRINGS={
+  zh:{
+    tagline:'關鍵時刻，知道怎麼說。',
+    appName:'婚禮對話卡',
+    edit:'編輯', done:'完成',
+    introTop:'點任何一句，手機會幫您唸出來。', introEm:'再點一下會重唸。', introBottom:'下方小字是讀音。',
+    keyBadge:'只要記這六句', keyTitle:'給雙方家人的萬用句', keyNote:'緊張的話，記住下面六句就很夠用了。',
+    keyChip:'⭐ 常用',
+    addKey:'＋ 新增萬用句', addPhrase:'＋ 新增句子', addSection:'＋ 新增一個分類',
+    footer:'Wishing them a lifetime of happiness · 祝幸福美滿',
+    warn:'此瀏覽器可能不支援語音播放，建議用手機的 Safari 或 Chrome 開啟。',
+    settings:'設定', uiLang:'介面語言 Language', textSize:'字體大小 Text size',
+    voice:'聲音 Voice', preview:'▶ 試聽', voiceTip:'⭐ 的聲音比較自然。iPhone 的部分進階語音不一定能給網頁使用。',
+    voiceRefresh:'↻ 剛下載了新語音？點此重新整理清單',
+    neural:'更自然的線上語音 Natural voice', neuralOff:'手機內建', neuralOn:'線上（更自然）',
+    neuralTip:'開啟後用線上語音（需要網路），聽起來更自然；關閉則用手機內建語音、可離線。慢速一律使用內建語音。',
+    speed:'語速 Speed', normal:'正常', slow:'🐢 慢速',
+    ai:'翻譯（AI，選填）AI translate', aiPlaceholder:'貼上免費的 Google Gemini 金鑰',
+    aiTip:'編輯時可用 AI 翻譯並自動產生讀音。共用額度用完時，可貼上自己的免費 Gemini 金鑰（Google AI Studio 免費取得、免信用卡）。金鑰只存在這支裝置、不會上傳。',
+    reset:'恢復成原本的內容',
+    save:'儲存', cancel:'取消', del:'刪除', confirmDel:'確定要刪除這句嗎？',
+    addTitle:'新增句子', cat:'分類 Category',
+    translate:'✨ 翻譯（自動填另一欄＋讀音）', translating:'翻譯中…',
+    needInput:'請先輸入文字', trFail:'翻譯失敗，請檢查網路後再試，或手動輸入。',
+    backCheck:'翻回來核對：', sameOk:'意思一樣就可以儲存；不一樣請改了再翻一次。', noPh:'（此來源沒有讀音）', done2:'已翻譯。',
+    resetConfirm:'恢復成最初的內容？您新增與修改的句子都會清除。',
+    delSec:'刪除整個分類？裡面的句子也會一起刪除。',
+    secName:'分類名稱', secNamePh:'例如：聊聊家鄉', secEn:'對方語言（選填）', secEnPh:'例如 About home',
+    natPh:'輸入文字', tgtPh:'輸入翻譯', phPh:'讀音（選填）',
+    langZh:'中文', langEn:'英文', pinyin:'拼音', reading:'近似讀音', noName:'未命名分類',
+    contactTitle:'意見回饋', contactName:'姓名', contactEmail:'電子郵件', contactMsg:'留言',
+    contactNamePh:'您的姓名', contactEmailPh:'your@email.com', contactMsgPh:'請輸入您的意見或問題…',
+    contactSend:'送出', contactCancel:'取消', contactSending:'送出中…',
+    contactThanks:'感謝您的意見！', contactFail:'送出失敗，請稍後再試。',
+  },
+  en:{
+    tagline:'Know what to say when it matters.',
+    appName:'HelloReady',
+    edit:'Edit', done:'Done',
+    introTop:'Tap any phrase and your phone will say it. ', introEm:'Tap again to repeat. ', introBottom:'The small line is the pronunciation.',
+    keyBadge:'Just these six', keyTitle:'Six phrases for both families', keyNote:'Nervous? These six are plenty.',
+    keyChip:'⭐ Key phrases',
+    addKey:'＋ Add a key phrase', addPhrase:'＋ Add a phrase', addSection:'＋ Add a category',
+    footer:'Wishing them a lifetime of happiness · 祝幸福美滿',
+    warn:'This browser may not support speech. Try opening it in Safari or Chrome on your phone.',
+    settings:'Settings', uiLang:'Language 介面語言', textSize:'Text size',
+    voice:'Voice', preview:'▶ Preview', voiceTip:'⭐ voices sound more natural. On iPhone, some premium voices may not be available to web pages.',
+    voiceRefresh:'↻ Just downloaded a voice? Tap to refresh the list',
+    neural:'Natural voice', neuralOff:'Device', neuralOn:'Online (richer)',
+    neuralTip:'On uses an online voice (needs internet) that sounds more natural; off uses your phone\u2019s built-in voice and works offline. Slow speed always uses the device voice.',
+    speed:'Speed', normal:'Normal', slow:'🐢 Slow',
+    ai:'AI translate (optional)', aiPlaceholder:'Paste a free Google Gemini key',
+    aiTip:'When editing, AI can translate and add the reading automatically. If the shared quota runs out, paste your own free Gemini key (free from Google AI Studio, no card). The key stays on this device only.',
+    reset:'Reset to the original phrases',
+    save:'Save', cancel:'Cancel', del:'Delete', confirmDel:'Delete this phrase?',
+    addTitle:'Add a phrase', cat:'Category',
+    translate:'✨ Translate (fills the other line + reading)', translating:'Translating\u2026',
+    needInput:'Type something to translate first', trFail:'Translation failed. Check your connection or type it in manually.',
+    backCheck:'Back-translation: ', sameOk:'If the meaning matches, save it; if not, edit and translate again.', noPh:'(no reading from this source)', done2:'Translated.',
+    resetConfirm:'Reset to the original phrases? Your added and edited phrases will be cleared.',
+    delSec:'Delete the whole category? Its phrases will be deleted too.',
+    secName:'Category name', secNamePh:'e.g. Talking about home', secEn:'Other language (optional)', secEnPh:'e.g. 聊聊家鄉',
+    natPh:'Type here', tgtPh:'Type the translation', phPh:'Reading (optional)',
+    langZh:'Chinese', langEn:'English', pinyin:'Pinyin', reading:'Reading', noName:'Untitled category',
+    contactTitle:'Feedback / Report', contactName:'Name', contactEmail:'Email', contactMsg:'Message',
+    contactNamePh:'Your name', contactEmailPh:'your@email.com', contactMsgPh:'Share feedback or report an issue…',
+    contactSend:'Send', contactCancel:'Cancel', contactSending:'Sending…',
+    contactThanks:'Thank you for your feedback!', contactFail:'Failed to send. Please try again.',
+  },
+};
+
+/* ---- storage keys ---- */
+const PKEY='weddingCard:pack:v2';
+const DKEY='weddingCard:data:v1';
+const ENKEY='weddingCard:pack:en:v1';
+const LASTKEY='weddingCard:lastpack:v1';
+const UIKEY='weddingCard:uilang:v1';
 const FKEY='weddingCard:fontscale:v1';
 const MKEY='weddingCard:mig:basicsFirst:v1';
+const PHV='weddingCard:mig:ph:v2';
 const TKEY='weddingCard:gkey:v1';
+const NEURALKEY='weddingCard:neural:v1';
+function voiceKey(){return 'weddingCard:voice:'+DATA.targetLang+':v1';}
+
 const Store=(function(){
   const hasKV = typeof window.storage!=='undefined' && window.storage && typeof window.storage.get==='function';
   const mem={};
@@ -406,119 +622,168 @@ const Store=(function(){
 
 function uid(){return 'u'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
 
-/* build a fresh pack from the authored defaults */
-function seed(){
-  const N=PACK_META.nativeLang, T=PACK_META.targetLang;
-  const ph=(r,i,pfx)=>({id:pfx, text:{[N]:r[0],[T]:r[1]}, phonetic:{[T]:r[2]||''}});
-  return {
-    packId:PACK_META.id, theme:PACK_META.theme,
-    nativeLang:N, targetLang:T, title:Object.assign({},PACK_META.title),
-    key: KEY_DEFAULT.map((r,i)=>ph(r,i,'k'+i)),
-    categories: SECTIONS_DEFAULT.map((s,si)=>({
-      id:'s'+si, title:{[N]:s.t,[T]:s.e}, sub:{[N]:s.sub||''},
-      phrases:s.rows.map((r,ri)=>ph(r,ri,'s'+si+'r'+ri))
-    }))
-  };
-}
-
-/* migrate legacy {key:[{zh,en,ph}], sections:[{t,e,sub,rows}]} -> pack shape */
-function migrateLegacy(old){
-  const N='zh', T='en';
-  const conv=(it)=>({id:it.id||uid(), text:{[N]:it.zh||'',[T]:it.en||''}, phonetic:{[T]:it.ph||''}});
-  return {
-    packId:PACK_META.id, theme:PACK_META.theme, nativeLang:N, targetLang:T,
-    title:Object.assign({},PACK_META.title),
-    key:(old.key||[]).map(conv),
-    categories:(old.sections||[]).map(s=>({
-      id:s.id||uid(), title:{[N]:s.t||'',[T]:s.e||''}, sub:{[N]:s.sub||''},
-      phrases:(s.rows||[]).map(conv)
-    }))
-  };
-}
-
-let DATA=seed();
+/* ---- state ---- */
+let DATA=seed('en');
+let currentPackId='en';
+let uiLang='en';
 let editMode=false, editingId=null, confirmId=null, secEditId=null, focusAfter=null;
 let geminiKey='';
-/* OPTIONAL shared key: paste YOUR free Gemini key between the quotes to let
-   everyone use AI translation without their own key. A key here is visible in
-   the page source, so use a free key with NO billing attached (worst case the
-   free quota empties; it can never be charged). Leave '' to require each user
-   to add their own key in Settings. */
 const DEFAULT_GKEY='';
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ===== accessors (language-pair aware) ===== */
+/* ---- builders ---- */
+function seed(id){
+  const p=PACKS[id], N=p.nativeLang, T=p.targetLang;
+  const ph=(r,pfx)=>({id:pfx, text:{[N]:r[0],[T]:r[1]}, phonetic:{[T]:r[2]||''}});
+  return {
+    packId:id, theme:'wedding', nativeLang:N, targetLang:T, title:Object.assign({},p.title),
+    key:p.key.map((r,i)=>ph(r,'k'+i)),
+    categories:p.sections.map((s,si)=>({
+      id:'s'+si, title:{[N]:s.t,[T]:s.e}, sub:{[N]:s.sub||''},
+      phrases:s.rows.map((r,ri)=>ph(r,'s'+si+'r'+ri))
+    }))
+  };
+}
+function migrateLegacy(old){
+  const N='zh', T='en';
+  const conv=(it)=>({id:it.id||uid(), text:{[N]:it.zh||'',[T]:it.en||''}, phonetic:{[T]:it.ph||''}});
+  return { packId:'zh', theme:'wedding', nativeLang:N, targetLang:T, title:Object.assign({},PACKS.zh.title),
+    key:(old.key||[]).map(conv),
+    categories:(old.sections||[]).map(s=>({id:s.id||uid(), title:{[N]:s.t||'',[T]:s.e||''}, sub:{[N]:s.sub||''}, phrases:(s.rows||[]).map(conv)})) };
+}
+
+/* ---- accessors ---- */
 function pNat(p){return (p.text&&p.text[DATA.nativeLang])||'';}
 function pTgt(p){return (p.text&&p.text[DATA.targetLang])||'';}
 function pPh(p){return (p.phonetic&&p.phonetic[DATA.targetLang])||'';}
 function cTitleNat(c){return (c.title&&c.title[DATA.nativeLang])||'';}
 function cTitleTgt(c){return (c.title&&c.title[DATA.targetLang])||'';}
 function cSub(c){return (c.sub&&c.sub[DATA.nativeLang])||'';}
+function cTitleUi(c){return (c.title&&c.title[uiLang])||cTitleNat(c)||'';}
+function cTitleOther(c){const other=[DATA.nativeLang,DATA.targetLang].find(l=>l!==uiLang)||DATA.targetLang;return (c.title&&c.title[other])||'';}
 function newPhrase(){return {id:uid(), text:{[DATA.nativeLang]:'',[DATA.targetLang]:''}, phonetic:{[DATA.targetLang]:''}, isNew:true};}
 function newCategory(){return {id:uid(), title:{[DATA.nativeLang]:'',[DATA.targetLang]:''}, sub:{[DATA.nativeLang]:''}, phrases:[], isNewSec:true};}
-function allPhrases(){const a=[...DATA.key];DATA.categories.forEach(c=>a.push(...c.phrases));return a;}
 
-/* font scale */
+/* ---- language presentation helpers ---- */
+function langClass(lang){return lang==='zh'?'lang-zh':(lang==='en'?'lang-en':'');}
+function phoneticLangClass(){return DATA.targetLang==='zh'?'lang-pinyin':'lang-zhsans';}
+function t(k){return (STRINGS[uiLang]&&STRINGS[uiLang][k])||STRINGS.en[k]||'';}
+function natLabel(){return DATA.nativeLang==='zh'?t('langZh'):t('langEn');}
+function tgtLabel(){return DATA.targetLang==='zh'?t('langZh'):t('langEn');}
+function phLabel(){return DATA.targetLang==='zh'?t('pinyin'):t('reading');}
+
+/* ---- font scale ---- */
 function applyFontScale(v){document.documentElement.style.setProperty('--fs',v);document.querySelectorAll('#fsSeg button').forEach(b=>b.classList.toggle('active',b.dataset.fs===String(v)));}
 
-/* ===== speech + voices ===== */
-let rate=0.85, voice=null, selectedVoiceName=null;
+/* ---- speech + voices ---- */
+let rate=0.85, voice=null, selectedVoiceName=null, useNeural=false, currentAudio=null, speakingCard=null;
 const synth=window.speechSynthesis;
-function voiceRank(v){const n=(v.name||'');let r=0;if(/siri/i.test(n))r+=6;if(/premium|enhanced|neural|natural/i.test(n))r+=5;if(/google/i.test(n))r+=3;if(/samantha|ava|allison|aaron|nicky|tom|daniel|karen|moira|serena|evan/i.test(n))r+=2;if(/en[-_]US/i.test(v.lang))r+=1;return r;}
+function voiceRank(v){
+  const n=v.name||''; let r=0;
+  if(/siri/i.test(n))r+=6;
+  if(/premium|enhanced|neural|natural/i.test(n))r+=5;
+  if(/google/i.test(n))r+=3;
+  if(/samantha|ava|allison|aaron|nicky|tom|daniel|karen|moira|serena|evan|mei-?jia|sin-?ji|ya-?ting|tian-?tian|li-?mu/i.test(n))r+=2;
+  const lang=(v.lang||'').toLowerCase();
+  if(DATA.targetLang==='zh'){ if(lang.indexOf('zh-tw')===0||lang==='zh-hant')r+=2; else if(lang.indexOf('zh-hk')===0)r+=1; else if(lang.indexOf('zh')===0)r+=1; }
+  else { if(/en[-_]us/i.test(v.lang))r+=1; }
+  return r;
+}
 function tgtVoices(){if(!synth)return [];const pre=DATA.targetLang;return synth.getVoices().filter(v=>v.lang&&v.lang.toLowerCase().indexOf(pre)===0);}
 function bestVoice(){const vs=tgtVoices().slice().sort((a,b)=>voiceRank(b)-voiceRank(a));return vs[0]||(synth?synth.getVoices()[0]:null)||null;}
 function resolveVoice(){let v=null;if(selectedVoiceName)v=tgtVoices().find(x=>x.name===selectedVoiceName)||(synth?synth.getVoices().find(x=>x.name===selectedVoiceName):null);voice=v||bestVoice();}
-function populateVoices(){if(!synth)return;const sel=document.getElementById('voiceSelect');const vs=tgtVoices().slice().sort((a,b)=>voiceRank(b)-voiceRank(a));if(vs.length===0)return;sel.innerHTML='';vs.forEach(v=>{const o=document.createElement('option');o.value=v.name;o.textContent=(voiceRank(v)>=5?'⭐ ':'')+v.name+'  ('+v.lang+')';sel.appendChild(o);});resolveVoice();if(voice)sel.value=voice.name;}
-let speakingCard=null;
-function speak(text,card){if(!synth||!text)return;synth.cancel();if(speakingCard)speakingCard.classList.remove('speaking');const u=new SpeechSynthesisUtterance(text);u.lang=(voice&&voice.lang)||(DATA.targetLang+'-US');u.rate=rate;u.pitch=1;if(voice)u.voice=voice;if(card){card.classList.add('speaking');speakingCard=card;u.onend=()=>{card.classList.remove('speaking');if(speakingCard===card)speakingCard=null;};u.onerror=()=>{card.classList.remove('speaking');};}synth.speak(u);}
-function previewVoice(){speak("Nice to meet you. We're happy to meet you today.",null);}
-if(synth){populateVoices();synth.onvoiceschanged=()=>populateVoices();}else{document.getElementById('warnbar').style.display='block';}
+function populateVoices(){if(!synth)return;const sel=document.getElementById('voiceSelect');if(!sel)return;const vs=tgtVoices().slice().sort((a,b)=>voiceRank(b)-voiceRank(a));if(vs.length===0){sel.innerHTML='';return;}sel.innerHTML='';vs.forEach(v=>{const o=document.createElement('option');o.value=v.name;o.textContent=(voiceRank(v)>=5?'⭐ ':'')+v.name+'  ('+v.lang+')';sel.appendChild(o);});resolveVoice();if(voice)sel.value=voice.name;}
+function stopSpeaking(){if(synth)synth.cancel();if(currentAudio){try{currentAudio.pause();}catch(e){}currentAudio=null;}if(speakingCard){speakingCard.classList.remove('speaking');speakingCard=null;}}
+function speakWeb(text,card){
+  if(!synth||!text)return;
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=(voice&&voice.lang)||(DATA.targetLang==='zh'?'zh-TW':DATA.targetLang+'-US');
+  u.rate=rate;u.pitch=1;if(voice)u.voice=voice;
+  if(card){card.classList.add('speaking');speakingCard=card;u.onend=()=>{card.classList.remove('speaking');if(speakingCard===card)speakingCard=null;};u.onerror=()=>{card.classList.remove('speaking');};}
+  synth.speak(u);
+}
+async function speakNeural(text,card){
+  try{
+    if(card){card.classList.add('speaking');speakingCard=card;}
+    const opts = DATA.targetLang==='zh' ? {voice:'Zhiyu',engine:'neural',language:'cmn-CN'} : {voice:'Joanna',engine:'neural',language:'en-US'};
+    const audio = await puter.ai.txt2speech(text, opts);
+    currentAudio=audio;
+    audio.onended=()=>{if(card)card.classList.remove('speaking');if(speakingCard===card)speakingCard=null;};
+    audio.onerror=()=>{if(card)card.classList.remove('speaking');};
+    audio.play();
+  }catch(e){ if(card)card.classList.remove('speaking'); speakWeb(text,card); }
+}
+function speak(text,card){
+  if(!text)return;
+  stopSpeaking();
+  if(useNeural && rate>=0.85 && typeof puter!=='undefined' && puter.ai && puter.ai.txt2speech){ speakNeural(text,card); return; }
+  speakWeb(text,card);
+}
+function previewText(){return DATA.targetLang==='zh'?'很高興認識您。恭喜！':"Nice to meet you. We're happy to meet you today.";}
+function previewVoice(){speak(previewText(),null);}
+function enableNeural(on){
+  useNeural=on; Store.save(NEURALKEY,on?'1':'');
+  document.querySelectorAll('#neuralSeg button').forEach(b=>b.classList.toggle('active',b.dataset.neural===(on?'1':'0')));
+  if(on && typeof puter==='undefined' && !document.getElementById('puterjs')){
+    const s=document.createElement('script');s.id='puterjs';s.src='https://js.puter.com/v2/';document.head.appendChild(s);
+  }
+}
+if(synth){populateVoices();synth.onvoiceschanged=()=>populateVoices();}else{const w=document.getElementById('warnbar');if(w)w.style.display='block';}
 window.addEventListener('focus',()=>{if(synth)populateVoices();});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&synth)populateVoices();});
 
-/* ===== data ops ===== */
+/* ---- data ops ---- */
 function removeItem(id){DATA.key=DATA.key.filter(x=>x.id!==id);DATA.categories.forEach(c=>{c.phrases=c.phrases.filter(x=>x.id!==id);});}
 function currentLocationKey(id){if(DATA.key.some(x=>x.id===id))return 'key';const c=DATA.categories.find(c=>c.phrases.some(x=>x.id===id));return c?c.id:'key';}
 function placeInto(target,item){if(target==='key'){DATA.key.push(item);}else{const c=DATA.categories.find(c=>c.id===target);(c?c.phrases:DATA.key).push(item);}}
 function catOptions(id){
   const cur=currentLocationKey(id);
-  let html='<option value="key"'+(cur==='key'?' selected':'')+'>⭐ 常用</option>';
-  DATA.categories.forEach(c=>{html+='<option value="'+c.id+'"'+(cur===c.id?' selected':'')+'>'+escHtml(cTitleNat(c)||'未命名分類')+'</option>';});
+  let html='<option value="key"'+(cur==='key'?' selected':'')+'>'+escHtml(t('keyChip'))+'</option>';
+  DATA.categories.forEach(c=>{html+='<option value="'+c.id+'"'+(cur===c.id?' selected':'')+'>'+escHtml(cTitleUi(c)||t('noName'))+'</option>';});
   return html;
 }
-async function save(){await Store.save(PKEY,JSON.stringify(DATA));}
+function catOptionsForModal(defaultTarget){
+  let html='<option value="key"'+(defaultTarget==='key'?' selected':'')+'>'+escHtml(t('keyChip'))+'</option>';
+  DATA.categories.forEach(c=>{html+='<option value="'+c.id+'"'+(c.id===defaultTarget?' selected':'')+'>'+escHtml(cTitleUi(c)||t('noName'))+'</option>';});
+  return html;
+}
+function packStorageKey(id){return id==='zh'?PKEY:ENKEY;}
+async function save(){await Store.save(packStorageKey(currentPackId),JSON.stringify(DATA));}
 
-/* ===== translation: AI (Gemini) if key set, else free no-key MyMemory ===== */
+/* ---- translation ---- */
 const LANGMAP={zh:'zh-CN',en:'en',ko:'ko',ja:'ja',es:'es',fr:'fr',de:'de'};
 function langName(code){return ({zh:'Chinese',en:'English',ko:'Korean',ja:'Japanese',es:'Spanish',fr:'French',de:'German'})[code]||code;}
+const THEME_PROMPTS={
+  wedding:'You translate short phrases for a wedding phrase card spoken warmly and politely to in-laws.',
+  general:'You translate short conversational phrases for a phrase card.',
+};
+function themeContext(){const theme=DATA.theme||'general';return THEME_PROMPTS[theme]||THEME_PROMPTS.general;}
 async function translate(text){
   const from=DATA.nativeLang, to=DATA.targetLang;
   const key=geminiKey||DEFAULT_GKEY;
   if(key){
     try{ return await translateGemini(text,from,to,key); }
-    catch(e){
-      const r=await translateMyMemory(text,from,to);
-      r.note=(geminiKey?'AI 翻譯失敗，已改用基本翻譯。':'共用的 AI 額度可能用完了，已改用基本翻譯。可到「設定」貼上自己的免費 Gemini 金鑰，恢復 AI 翻譯與讀音。');
-      return r;
-    }
+    catch(e){ return await translateMyMemory(text,from,to); }
   }
   return await translateMyMemory(text,from,to);
 }
 async function translateGemini(text,from,to,key){
   const model='gemini-2.5-flash-lite';
   const url='https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+encodeURIComponent(key);
-  const prompt='You translate short phrases for a wedding phrase card spoken to in-laws. '
+  let phoneticInstruction;
+  if(to==='zh'){ phoneticInstruction='Use Traditional Chinese characters in the translation. Also write the Hanyu Pinyin of that Chinese WITH tone marks (field "phonetic").'; }
+  else { phoneticInstruction='Also write a phonetic approximation of that '+langName(to)+' pronunciation using '+langName(from)+' characters (field "phonetic"), so a '+langName(from)+' speaker can read it aloud.'; }
+  const prompt=themeContext()+' '
     +'Translate this '+langName(from)+' into natural, warm, polite '+langName(to)+'. '
-    +'Also write a phonetic approximation of that '+langName(to)+' pronunciation using '+langName(from)+' characters, so a '+langName(from)+' speaker can read it aloud. '
-    +'Also translate your '+langName(to)+' translation literally back into '+langName(from)+' (field "back") so the user can check the meaning is right. '
+    +phoneticInstruction+' '
+    +'Also translate your '+langName(to)+' translation literally back into '+langName(from)+' (field "back") so the user can check the meaning. '
     +'Reply with ONLY compact JSON, no markdown: {"translation":"...","phonetic":"...","back":"..."}\n\nText: '+text;
   const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
   if(!r.ok)throw new Error('gemini '+r.status);
   const data=await r.json();
-  let t=((((data.candidates||[])[0]||{}).content||{}).parts||[])[0];
-  t=(t&&t.text)||'';
-  t=t.replace(/```json|```/g,'').trim();
-  const obj=JSON.parse(t);
+  let tx=((((data.candidates||[])[0]||{}).content||{}).parts||[])[0];
+  tx=(tx&&tx.text)||''; tx=tx.replace(/```json|```/g,'').trim();
+  const obj=JSON.parse(tx);
   return {translation:obj.translation||'',phonetic:obj.phonetic||'',back:obj.back||'',note:''};
 }
 async function translateMyMemory(text,from,to){
@@ -534,25 +799,53 @@ async function translateMyMemory(text,from,to){
     const r2=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(tr)+'&langpair='+encodeURIComponent(lp2));
     if(r2.ok){const d2=await r2.json();back=(d2.responseData&&d2.responseData.translatedText)||'';}
   }catch(e){}
-  return {translation:tr,phonetic:'',back:back,note:'基本翻譯（沒有讀音）。'};
+  return {translation:tr,phonetic:'',back:back,note:t('noPh')};
 }
 
 const ICON_SPEAK='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.06a7 7 0 0 1 0 13.48v2.06a9 9 0 0 0 0-17.6z"/></svg>';
 const ICON_EDIT='<svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>';
 const ICON_DEL='<svg viewBox="0 0 24 24"><path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>';
 
+function runTranslate(tb,statusEl,getNat,setTgt,setPh,onDone){
+  const v=getNat().trim();
+  if(!v){statusEl.textContent=t('needInput');return;}
+  const label=tb.textContent;tb.disabled=true;tb.textContent=t('translating');statusEl.textContent='';
+  translate(v).then(res=>{
+    if(res.translation)setTgt(res.translation);
+    if(res.phonetic)setPh(res.phonetic);
+    const safeBack=res.back?escHtml(res.back):'';
+    let msg=safeBack?(t('backCheck')+'「'+safeBack+'」<br>'+t('sameOk')):'';
+    if(res.note)msg+=(msg?'<br>':'')+escHtml(res.note);
+    if(!msg)msg=t('done2');
+    statusEl.innerHTML=msg;
+    onDone(res);
+  }).catch(e=>{statusEl.textContent=t('trFail');}).finally(()=>{tb.disabled=false;tb.textContent=label;});
+}
+
 function cardEl(item){
   const c=document.createElement('div');c.className='card';
+  const natL=langClass(DATA.nativeLang), tgtL=langClass(DATA.targetLang), phL=phoneticLangClass();
   if(editingId===item.id){
-    c.innerHTML='<div class="editform"><label>中文</label><input class="zh-input" id="in-zh-'+item.id+'" placeholder="輸入中文" value="'+escAttr(pNat(item))+'"><button type="button" class="translate-btn">✨ 翻譯成英文（自動填英文＋讀音）</button><div class="tr-status"></div><label>English</label><input class="en-input" id="in-en-'+item.id+'" placeholder="Type the English" value="'+escAttr(pTgt(item))+'"><label>近似讀音（選填）</label><input class="ph-input" id="in-ph-'+item.id+'" placeholder="例如：三Q 佛 ..." value="'+escAttr(pPh(item))+'"><label>分類 Category</label><select class="cat-input" id="in-cat-'+item.id+'">'+catOptions(item.id)+'</select><div class="form-btns"><button class="btn btn-save">儲存</button><button class="btn btn-cancel">取消</button></div></div>';
+    c.innerHTML='<div class="editform">'
+      +'<label>'+escHtml(natLabel())+'</label>'
+      +'<input class="in-native '+natL+'" id="in-nat-'+item.id+'" placeholder="'+escAttr(t('natPh'))+'" value="'+escAttr(pNat(item))+'">'
+      +'<button type="button" class="translate-btn">'+escHtml(t('translate'))+'</button>'
+      +'<div class="tr-status"></div>'
+      +'<label>'+escHtml(tgtLabel())+'</label>'
+      +'<input class="in-target '+tgtL+'" id="in-tgt-'+item.id+'" placeholder="'+escAttr(t('tgtPh'))+'" value="'+escAttr(pTgt(item))+'">'
+      +'<label>'+escHtml(phLabel())+'</label>'
+      +'<input class="in-ph '+phL+'" id="in-ph-'+item.id+'" placeholder="'+escAttr(t('phPh'))+'" value="'+escAttr(pPh(item))+'">'
+      +'<label>'+escHtml(t('cat'))+'</label>'
+      +'<select class="cat-input" id="in-cat-'+item.id+'">'+catOptions(item.id)+'</select>'
+      +'<div class="form-btns"><button class="btn btn-save">'+escHtml(t('save'))+'</button><button class="btn btn-cancel">'+escHtml(t('cancel'))+'</button></div></div>';
     let translatedFlag=false, lastBack='';
     c.querySelector('.btn-save').addEventListener('click',async()=>{
-      const zh=c.querySelector('.zh-input').value.trim();
-      const en=c.querySelector('.en-input').value.trim();
-      const ph=c.querySelector('.ph-input').value.trim();
+      const nat=c.querySelector('.in-native').value.trim();
+      const tgt=c.querySelector('.in-target').value.trim();
+      const ph=c.querySelector('.in-ph').value.trim();
       const chosenCat=c.querySelector('.cat-input').value;
-      if(!zh&&!en){removeItem(item.id);editingId=null;await save();render();return;}
-      item.text[DATA.nativeLang]=zh;item.text[DATA.targetLang]=en;item.phonetic[DATA.targetLang]=ph;
+      if(!nat&&!tgt){removeItem(item.id);editingId=null;await save();render();return;}
+      item.text[DATA.nativeLang]=nat;item.text[DATA.targetLang]=tgt;item.phonetic[DATA.targetLang]=ph;
       if(translatedFlag){item.auto=true;item._back=lastBack;}
       delete item.isNew;
       const cur=currentLocationKey(item.id);
@@ -561,43 +854,31 @@ function cardEl(item){
     });
     c.querySelector('.btn-cancel').addEventListener('click',async()=>{if(item.isNew){removeItem(item.id);}editingId=null;await save();render();});
     const tb=c.querySelector('.translate-btn');
-    if(tb)tb.addEventListener('click',async()=>{
-      const zhv=c.querySelector('.zh-input').value.trim();
-      const status=c.querySelector('.tr-status');
-      if(!zhv){status.textContent='請先輸入中文';return;}
-      const label=tb.textContent;tb.disabled=true;tb.textContent='翻譯中…';status.textContent='';
-      try{
-        const res=await translate(zhv);
-        if(res.translation)c.querySelector('.en-input').value=res.translation;
-        if(res.phonetic)c.querySelector('.ph-input').value=res.phonetic;
-        translatedFlag=true;lastBack=res.back||'';
-        const safeBack=res.back?escHtml(res.back):'';
-        let msg=safeBack?('翻回中文核對：「'+safeBack+'」<br>意思一樣就可以儲存；不一樣請改中文再翻一次。'):'';
-        if(res.note)msg+=(msg?'<br>':'')+escHtml(res.note);
-        if(res.translation&&!res.phonetic&&!res.note)msg+=(msg?'<br>':'')+'（此來源沒有讀音）';
-        if(!msg)msg='已翻譯。';
-        status.innerHTML=msg;
-      }catch(e){status.textContent='翻譯失敗，請檢查網路後再試，或手動輸入英文。';}
-      finally{tb.disabled=false;tb.textContent=label;}
+    if(tb)tb.addEventListener('click',()=>{
+      runTranslate(tb,c.querySelector('.tr-status'),
+        ()=>c.querySelector('.in-native').value,
+        (v)=>{c.querySelector('.in-target').value=v;},
+        (v)=>{c.querySelector('.in-ph').value=v;},
+        (res)=>{translatedFlag=true;lastBack=res.back||'';});
     });
-    focusAfter='in-zh-'+item.id;return c;
+    focusAfter='in-nat-'+item.id;return c;
   }
   if(confirmId===item.id){
-    c.innerHTML='<div class="confirm-box"><span class="ask">確定要刪除這句嗎？</span></div>';
-    const box=c.querySelector('.confirm-box');const yes=document.createElement('button');yes.className='btn btn-save';yes.textContent='刪除';const no=document.createElement('button');no.className='btn btn-cancel';no.textContent='取消';const wrap=document.createElement('div');wrap.style.display='flex';wrap.style.gap='8px';wrap.appendChild(yes);wrap.appendChild(no);box.appendChild(wrap);
+    c.innerHTML='<div class="confirm-box"><span class="ask">'+escHtml(t('confirmDel'))+'</span></div>';
+    const box=c.querySelector('.confirm-box');const yes=document.createElement('button');yes.className='btn btn-save';yes.textContent=t('del');const no=document.createElement('button');no.className='btn btn-cancel';no.textContent=t('cancel');const wrap=document.createElement('div');wrap.style.display='flex';wrap.style.gap='8px';wrap.appendChild(yes);wrap.appendChild(no);box.appendChild(wrap);
     yes.addEventListener('click',async()=>{removeItem(item.id);confirmId=null;await save();render();});
     no.addEventListener('click',()=>{confirmId=null;render();});return c;
   }
-  let inner='<div class="txt"><div class="zh">'+escHtml(pNat(item))+'</div><div class="en">'+escHtml(pTgt(item))+'</div>';
-  if(item.auto)inner+='<span class="auto-tag">AI 翻譯</span>';
-  if(pPh(item))inner+='<div class="ph">'+escHtml(pPh(item))+'</div>';
+  let inner='<div class="txt"><div class="line-native '+natL+'">'+escHtml(pNat(item))+'</div><div class="line-target '+tgtL+'">'+escHtml(pTgt(item))+'</div>';
+  if(item.auto)inner+='<span class="auto-tag">AI</span>';
+  if(pPh(item))inner+='<div class="line-phonetic '+phL+'">'+escHtml(pPh(item))+'</div>';
   inner+='</div>';c.innerHTML=inner;
   const sp=document.createElement('div');sp.className='speaker';sp.setAttribute('aria-hidden','true');sp.innerHTML=ICON_SPEAK;sp.addEventListener('click',(e)=>{e.stopPropagation();speak(pTgt(item),c);});c.appendChild(sp);
   const actions=document.createElement('div');actions.className='row-actions';
-  const eBtn=document.createElement('button');eBtn.className='icon-btn';eBtn.setAttribute('aria-label','修改');eBtn.innerHTML=ICON_EDIT;eBtn.addEventListener('click',(e)=>{e.stopPropagation();editingId=item.id;confirmId=null;render();});
-  const dBtn=document.createElement('button');dBtn.className='icon-btn del';dBtn.setAttribute('aria-label','刪除');dBtn.innerHTML=ICON_DEL;dBtn.addEventListener('click',(e)=>{e.stopPropagation();confirmId=item.id;editingId=null;render();});
+  const eBtn=document.createElement('button');eBtn.className='icon-btn';eBtn.setAttribute('aria-label',t('edit'));eBtn.innerHTML=ICON_EDIT;eBtn.addEventListener('click',(e)=>{e.stopPropagation();editingId=item.id;confirmId=null;render();});
+  const dBtn=document.createElement('button');dBtn.className='icon-btn del';dBtn.setAttribute('aria-label',t('del'));dBtn.innerHTML=ICON_DEL;dBtn.addEventListener('click',(e)=>{e.stopPropagation();confirmId=item.id;editingId=null;render();});
   actions.appendChild(eBtn);actions.appendChild(dBtn);c.appendChild(actions);
-  if(!editMode){c.setAttribute('role','button');c.tabIndex=0;c.setAttribute('aria-label','唸出：'+pTgt(item));c.addEventListener('click',()=>speak(pTgt(item),c));c.addEventListener('keydown',(e)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();speak(pTgt(item),c);}});}
+  if(!editMode){c.setAttribute('role','button');c.tabIndex=0;c.setAttribute('aria-label',pTgt(item));c.addEventListener('click',()=>speak(pTgt(item),c));c.addEventListener('keydown',(e)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();speak(pTgt(item),c);}});}
   return c;
 }
 function addBtn(label,onClick){const b=document.createElement('button');b.className='add-row';b.textContent=label;b.addEventListener('click',onClick);return b;}
@@ -611,20 +892,22 @@ function render(){
     const sec=document.createElement('section');sec.id='block-'+cat.id;sec.dataset.spy='';
     if(secEditId===cat.id){
       const form=document.createElement('div');form.className='card';
-      form.innerHTML='<div class="editform"><label>分類名稱（中文）</label><input class="zh-input" id="sec-t-'+cat.id+'" placeholder="例如：聊聊家鄉" value="'+escAttr(cTitleNat(cat))+'"><label>English (optional)</label><input class="en-input" id="sec-e-'+cat.id+'" placeholder="e.g. About home" value="'+escAttr(cTitleTgt(cat))+'"><div class="form-btns"><button class="btn btn-save">儲存</button><button class="btn btn-cancel">取消</button></div></div>';
-      form.querySelector('.btn-save').addEventListener('click',async()=>{const t=form.querySelector('#sec-t-'+cat.id).value.trim();const e=form.querySelector('#sec-e-'+cat.id).value.trim();if(!t&&!e&&cat.phrases.length===0){DATA.categories=DATA.categories.filter(x=>x.id!==cat.id);}else{cat.title[DATA.nativeLang]=t||'未命名分類';cat.title[DATA.targetLang]=e;delete cat.isNewSec;}secEditId=null;await save();render();});
+      form.innerHTML='<div class="editform"><label>'+escHtml(t('secName'))+'</label><input class="'+langClass(DATA.nativeLang)+'" id="sec-t-'+cat.id+'" placeholder="'+escAttr(t('secNamePh'))+'" value="'+escAttr(cTitleNat(cat))+'"><label>'+escHtml(t('secEn'))+'</label><input class="'+langClass(DATA.targetLang)+'" id="sec-e-'+cat.id+'" placeholder="'+escAttr(t('secEnPh'))+'" value="'+escAttr(cTitleTgt(cat))+'"><div class="form-btns"><button class="btn btn-save">'+escHtml(t('save'))+'</button><button class="btn btn-cancel">'+escHtml(t('cancel'))+'</button></div></div>';
+      form.querySelector('.btn-save').addEventListener('click',async()=>{const tt=form.querySelector('#sec-t-'+cat.id).value.trim();const ee=form.querySelector('#sec-e-'+cat.id).value.trim();if(!tt&&!ee&&cat.phrases.length===0){DATA.categories=DATA.categories.filter(x=>x.id!==cat.id);}else{cat.title[DATA.nativeLang]=tt||t('noName');cat.title[DATA.targetLang]=ee;delete cat.isNewSec;}secEditId=null;await save();render();});
       form.querySelector('.btn-cancel').addEventListener('click',async()=>{if(cat.isNewSec&&cat.phrases.length===0){DATA.categories=DATA.categories.filter(x=>x.id!==cat.id);}secEditId=null;await save();render();});
       sec.appendChild(form);focusAfter='sec-t-'+cat.id;
     } else {
-      const h=document.createElement('div');h.className='sec-title';h.innerHTML=escHtml(cTitleNat(cat))+(cTitleTgt(cat)?' <span class="en">'+escHtml(cTitleTgt(cat))+'</span>':'');
+      const h=document.createElement('div');h.className='sec-title';
+      const _altLang=[DATA.nativeLang,DATA.targetLang].find(l=>l!==uiLang)||DATA.targetLang;
+      h.innerHTML='<span class="'+langClass(uiLang)+'">'+escHtml(cTitleUi(cat))+'</span>'+(cTitleOther(cat)?'<span class="sub2 '+langClass(_altLang)+'">'+escHtml(cTitleOther(cat))+'</span>':'');
       const ha=document.createElement('div');ha.className='sechead-actions';
-      const eB=document.createElement('button');eB.className='icon-btn';eB.setAttribute('aria-label','改分類');eB.innerHTML=ICON_EDIT;eB.addEventListener('click',()=>{secEditId=cat.id;render();});
-      const dB=document.createElement('button');dB.className='icon-btn del';dB.setAttribute('aria-label','刪分類');dB.innerHTML=ICON_DEL;dB.addEventListener('click',async()=>{if(confirm('刪除整個「'+cTitleNat(cat)+'」分類？裡面的句子也會一起刪除。')){DATA.categories=DATA.categories.filter(x=>x.id!==cat.id);await save();render();}});
+      const eB=document.createElement('button');eB.className='icon-btn';eB.setAttribute('aria-label',t('edit'));eB.innerHTML=ICON_EDIT;eB.addEventListener('click',()=>{secEditId=cat.id;render();});
+      const dB=document.createElement('button');dB.className='icon-btn del';dB.setAttribute('aria-label',t('del'));dB.innerHTML=ICON_DEL;dB.addEventListener('click',async()=>{if(confirm(t('delSec'))){DATA.categories=DATA.categories.filter(x=>x.id!==cat.id);await save();render();}});
       ha.appendChild(eB);ha.appendChild(dB);h.appendChild(ha);sec.appendChild(h);
       const sub=cSub(cat);if(sub){const sd=document.createElement('div');sd.className='sec-sub';sd.textContent=sub;sec.appendChild(sd);}
     }
     cat.phrases.forEach(it=>sec.appendChild(cardEl(it)));
-    sec.appendChild(addBtn('＋ 新增句子',()=>openAddPopup(cat.id)));
+    sec.appendChild(addBtn(t('addPhrase'),()=>openAddPopup(cat.id)));
     wrap.appendChild(sec);
   });
   buildChips();
@@ -634,9 +917,9 @@ function render(){
   setupSpy();
 }
 
-function topbarH(){const t=document.querySelector('.topbar');return t?t.offsetHeight:110;}
+function topbarH(){const tb=document.querySelector('.topbar');return tb?tb.offsetHeight:110;}
 function scrollToEl(el){if(!el)return;const top=el.getBoundingClientRect().top+window.scrollY-topbarH()-8;window.scrollTo({top:Math.max(0,top),behavior:reduceMotion?'auto':'smooth'});}
-function buildChips(){const bar=document.getElementById('chipbar');bar.innerHTML='';const mk=(label,target)=>{const b=document.createElement('button');b.className='chip';b.textContent=label;b.dataset.target=target;b.addEventListener('click',()=>scrollToEl(document.getElementById(target)));bar.appendChild(b);};mk('⭐ 常用','block-key');DATA.categories.forEach(c=>mk(cTitleNat(c),'block-'+c.id));}
+function buildChips(){const bar=document.getElementById('chipbar');bar.innerHTML='';const mk=(label,target)=>{const b=document.createElement('button');b.className='chip';b.textContent=label;b.dataset.target=target;b.addEventListener('click',()=>scrollToEl(document.getElementById(target)));bar.appendChild(b);};mk(t('keyChip'),'block-key');DATA.categories.forEach(c=>mk(cTitleUi(c),'block-'+c.id));}
 function setActiveChip(id){document.querySelectorAll('.chip').forEach(ch=>{const on=ch.dataset.target===id;ch.classList.toggle('active',on);if(on)ch.scrollIntoView({block:'nearest',inline:'center',behavior:reduceMotion?'auto':'smooth'});});}
 let spy=null;
 function setupSpy(){if(spy)spy.disconnect();const opts={root:null,rootMargin:'-'+(topbarH()+14)+'px 0px -62% 0px',threshold:0};spy=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)setActiveChip(e.target.id);});},opts);document.querySelectorAll('[data-spy]').forEach(el=>spy.observe(el));}
@@ -645,6 +928,7 @@ window.addEventListener('resize',()=>{setupSpy();});
 function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function escAttr(s){return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
 
+/* ---- settings sheet ---- */
 const sheet=document.getElementById('settingsSheet');
 const overlay=document.getElementById('sheetOverlay');
 function openSheet(){overlay.classList.add('open');sheet.classList.add('open');}
@@ -652,128 +936,252 @@ function closeSheet(){overlay.classList.remove('open');sheet.classList.remove('o
 document.getElementById('gearBtn').addEventListener('click',openSheet);
 overlay.addEventListener('click',closeSheet);
 
+/* ---- contact form ---- */
+// To connect to Google Sheets:
+// 1. Create a Google Form at forms.google.com (fields: Name, Email, Message)
+// 2. Responses tab → Link to Sheets
+// 3. From the form URL extract FORM_ID: https://docs.google.com/forms/d/e/FORM_ID/viewform
+// 4. Get entry IDs: open form → "..." → "Get pre-filled link" → fill dummy values → copy URL
+// 5. Replace the empty strings below with your values
+const GFORM_ACTION='https://docs.google.com/forms/d/e/1FAIpQLSe_5EfB8wVp1FKKzlp7NslL4MhZOIAjfBXSo0Ki7o8ExZ2pmA/formResponse';
+const GFORM_NAME='entry.1601417067';
+const GFORM_EMAIL='entry.1815762016';
+const GFORM_MSG='entry.1308661583';
+
+function openContactModal(){document.getElementById('contactModal').classList.add('open');setTimeout(()=>document.getElementById('contact-name').focus(),50);}
+function closeContactModal(){document.getElementById('contactModal').classList.remove('open');document.getElementById('contactStatus').textContent='';}
+document.getElementById('contactBtn').addEventListener('click',openContactModal);
+document.getElementById('contactBtnLanding').addEventListener('click',openContactModal);
+document.getElementById('contactModalClose').addEventListener('click',closeContactModal);
+document.getElementById('contactCancelBtn').addEventListener('click',closeContactModal);
+document.getElementById('contactModal').addEventListener('click',(e)=>{if(e.target===e.currentTarget)closeContactModal();});
+document.getElementById('contactSend').addEventListener('click',async()=>{
+  const name=document.getElementById('contact-name').value.trim();
+  const email=document.getElementById('contact-email').value.trim();
+  const msg=document.getElementById('contact-message').value.trim();
+  if(!name&&!email&&!msg)return;
+  const btn=document.getElementById('contactSend');
+  const orig=btn.textContent;
+  const status=document.getElementById('contactStatus');
+  btn.disabled=true;btn.textContent=t('contactSending');status.textContent='';
+  try{
+    if(GFORM_ACTION){
+      const fd=new FormData();
+      if(GFORM_NAME&&name)fd.append(GFORM_NAME,name);
+      if(GFORM_EMAIL&&email)fd.append(GFORM_EMAIL,email);
+      if(GFORM_MSG&&msg)fd.append(GFORM_MSG,msg);
+      await fetch(GFORM_ACTION,{method:'POST',mode:'no-cors',body:fd});
+    }
+    status.textContent=t('contactThanks');
+    document.getElementById('contact-name').value='';
+    document.getElementById('contact-email').value='';
+    document.getElementById('contact-message').value='';
+    setTimeout(closeContactModal,2000);
+  }catch(e){status.textContent=t('contactFail');}
+  finally{btn.disabled=false;btn.textContent=orig;}
+});
+
+/* ---- add popup ---- */
 let addPopupTranslatedFlag=false, addPopupLastBack='';
-function catOptionsForModal(defaultTarget){
-  let html='<option value="key"'+(defaultTarget==='key'?' selected':'')+'>⭐ 常用</option>';
-  DATA.categories.forEach(c=>{html+='<option value="'+c.id+'"'+(c.id===defaultTarget?' selected':'')+'>'+escHtml(cTitleNat(c)||'未命名分類')+'</option>';});
-  return html;
-}
 function openAddPopup(targetCatId){
   addPopupTranslatedFlag=false;addPopupLastBack='';
-  document.getElementById('modal-zh').value='';
-  document.getElementById('modal-en').value='';
+  document.getElementById('modal-nat').value='';
+  document.getElementById('modal-tgt').value='';
   document.getElementById('modal-ph').value='';
   document.getElementById('modalTrStatus').textContent='';
   document.getElementById('modal-cat').innerHTML=catOptionsForModal(targetCatId||'key');
   document.getElementById('addModal').classList.add('open');
-  setTimeout(()=>document.getElementById('modal-zh').focus(),50);
+  setTimeout(()=>document.getElementById('modal-nat').focus(),50);
 }
 function closeAddPopup(){document.getElementById('addModal').classList.remove('open');}
 document.getElementById('modalCancel').addEventListener('click',closeAddPopup);
 document.getElementById('modalClose').addEventListener('click',closeAddPopup);
 document.getElementById('addModal').addEventListener('click',(e)=>{if(e.target===e.currentTarget)closeAddPopup();});
 document.getElementById('modalSave').addEventListener('click',async()=>{
-  const zh=document.getElementById('modal-zh').value.trim();
-  const en=document.getElementById('modal-en').value.trim();
+  const nat=document.getElementById('modal-nat').value.trim();
+  const tgt=document.getElementById('modal-tgt').value.trim();
   const ph=document.getElementById('modal-ph').value.trim();
   const chosenCat=document.getElementById('modal-cat').value;
-  if(!zh&&!en){closeAddPopup();return;}
+  if(!nat&&!tgt){closeAddPopup();return;}
   const it=newPhrase();
-  it.text[DATA.nativeLang]=zh;it.text[DATA.targetLang]=en;it.phonetic[DATA.targetLang]=ph;
+  it.text[DATA.nativeLang]=nat;it.text[DATA.targetLang]=tgt;it.phonetic[DATA.targetLang]=ph;
   if(addPopupTranslatedFlag){it.auto=true;it._back=addPopupLastBack;}
   delete it.isNew;
   placeInto(chosenCat,it);
   await save();closeAddPopup();render();
 });
-document.getElementById('modalTrBtn').addEventListener('click',async()=>{
-  const zhv=document.getElementById('modal-zh').value.trim();
-  const status=document.getElementById('modalTrStatus');
+document.getElementById('modalTrBtn').addEventListener('click',()=>{
   const tb=document.getElementById('modalTrBtn');
-  if(!zhv){status.textContent='請先輸入中文';return;}
-  const label=tb.textContent;tb.disabled=true;tb.textContent='翻譯中…';status.textContent='';
-  try{
-    const res=await translate(zhv);
-    if(res.translation)document.getElementById('modal-en').value=res.translation;
-    if(res.phonetic)document.getElementById('modal-ph').value=res.phonetic;
-    addPopupTranslatedFlag=true;addPopupLastBack=res.back||'';
-    const safeBack=res.back?escHtml(res.back):'';
-    let msg=safeBack?('翻回中文核對：「'+safeBack+'」<br>意思一樣就可以儲存；不一樣請改中文再翻一次。'):'';
-    if(res.note)msg+=(msg?'<br>':'')+escHtml(res.note);
-    if(res.translation&&!res.phonetic&&!res.note)msg+=(msg?'<br>':'')+'（此來源沒有讀音）';
-    if(!msg)msg='已翻譯。';
-    status.innerHTML=msg;
-  }catch(e){status.textContent='翻譯失敗，請檢查網路後再試，或手動輸入英文。';}
-  finally{tb.disabled=false;tb.textContent=label;}
+  runTranslate(tb,document.getElementById('modalTrStatus'),
+    ()=>document.getElementById('modal-nat').value,
+    (v)=>{document.getElementById('modal-tgt').value=v;},
+    (v)=>{document.getElementById('modal-ph').value=v;},
+    (res)=>{addPopupTranslatedFlag=true;addPopupLastBack=res.back||'';});
 });
 
+/* ---- landing / packs ---- */
 const landing=document.getElementById('landing');
-function enterApp(){landing.classList.add('hide');}
-document.getElementById('enterBtn').addEventListener('click',enterApp);
-landing.addEventListener('click',(e)=>{if(e.target===landing)enterApp();});
+function detectLang(){try{const ls=navigator.languages||[navigator.language||'en'];for(const l of ls){if(/^zh/i.test(l))return 'zh';if(/^en/i.test(l))return 'en';}}catch(e){}return 'en';}
+function buildLanding(){
+  document.getElementById('landingTag').textContent=t('tagline');
+  const suggested = uiLang==='en'?'en':'zh';
+  const other = suggested==='en'?'zh':'en';
+  const box=document.getElementById('landingOptions');box.innerHTML='';
+  const prim=document.createElement('button');prim.className='enter';prim.textContent=PACKS[suggested].entry[uiLang];prim.addEventListener('click',()=>enterPack(suggested));
+  box.appendChild(prim);
+}
+function showLanding(){buildLanding();landing.classList.remove('hide');}
+async function enterPack(id){
+  await loadPack(id);
+  await Store.save(LASTKEY,id);
+  landing.classList.add('hide');
+  applyStrings();
+  render();
+}
+document.getElementById('homeBtn').addEventListener('click',showLanding);
+document.getElementById('landingGlobe').addEventListener('click',()=>setUiLang(uiLang==='zh'?'en':'zh'));
 
-document.querySelectorAll('#fsSeg button').forEach(b=>{b.addEventListener('click',async()=>{const v=b.dataset.fs;applyFontScale(v);await Store.save(FKEY,v);});});
-document.querySelectorAll('.seg [data-rate]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.seg [data-rate]').forEach(x=>x.classList.remove('active'));b.classList.add('active');rate=parseFloat(b.dataset.rate);});});
-document.getElementById('voiceSelect').addEventListener('change',async function(){selectedVoiceName=this.value;resolveVoice();await Store.save(VKEY,selectedVoiceName);previewVoice();});
-document.getElementById('voicePreview').addEventListener('click',previewVoice);
-document.getElementById('voiceRefresh').addEventListener('click',()=>{populateVoices();previewVoice();});
-document.getElementById('gkeyInput').addEventListener('input',async function(){geminiKey=this.value.trim();await Store.save(TKEY,geminiKey);});
-function syncEditBtn(){const b=document.getElementById('editToggleTop');if(b){b.classList.toggle('on',editMode);const lbl=b.querySelector('.elabel');if(lbl)lbl.textContent=editMode?'完成':'編輯';}}
-function setEditMode(on){editMode=on;editingId=null;confirmId=null;secEditId=null;syncEditBtn();render();}
-document.getElementById('editToggleTop').addEventListener('click',()=>setEditMode(!editMode));
-document.querySelector('[data-add-key]').addEventListener('click',()=>openAddPopup('key'));
-
-document.getElementById('addSectionBtn').addEventListener('click',async()=>{const cat=newCategory();DATA.categories.push(cat);secEditId=cat.id;await save();render();window.scrollTo(0,document.body.scrollHeight);});
-document.getElementById('resetBtn').addEventListener('click',async()=>{if(confirm('恢復成最初的內容？您新增與修改的句子都會清除。')){await Store.clear(PKEY);DATA=seed();editingId=null;confirmId=null;secEditId=null;render();closeSheet();}});
-
-/* ===== init ===== */
-(async function(){
-  const sv=await Store.load(VKEY);if(sv)selectedVoiceName=sv;populateVoices();
-  const fsv=await Store.load(FKEY);applyFontScale(fsv||'1');
-  const gk=await Store.load(TKEY);if(gk){geminiKey=gk;const gi=document.getElementById('gkeyInput');if(gi)gi.value=gk;}
-
-  // load order: new pack -> migrate legacy -> seed
+async function loadPack(id){
+  currentPackId=id;
+  DATA=await loadPackData(id);
+  const p=PACKS[id];
+  if(!DATA.nativeLang)DATA.nativeLang=p.nativeLang;
+  if(!DATA.targetLang)DATA.targetLang=p.targetLang;
+  if(!DATA.title)DATA.title=Object.assign({},p.title);
+  selectedVoiceName=await Store.load(voiceKey());
+  populateVoices();
+  setTitle();
+}
+async function loadPackData(id){
+  if(id==='en'){
+    const v=await Store.load(ENKEY);
+    if(v){try{const p=JSON.parse(v);if(p&&p.key&&p.categories)return p;}catch(e){}}
+    return seed('en');
+  }
   let loaded=null;
   const v2=await Store.load(PKEY);
   if(v2){try{const p=JSON.parse(v2);if(p&&p.key&&p.categories)loaded=p;}catch(e){}}
-  if(!loaded){const v1=await Store.load(DKEY);if(v1){try{const old=JSON.parse(v1);if(old&&old.key&&old.sections){loaded=migrateLegacy(old);}}catch(e){}}}
-  if(loaded)DATA=loaded;
-
-  // ensure language fields present
-  if(!DATA.nativeLang)DATA.nativeLang='zh';
-  if(!DATA.targetLang)DATA.targetLang='en';
-  if(!DATA.title)DATA.title=Object.assign({},PACK_META.title);
-
-  // phonetic backfill from defaults (by id), for any blank readings
-  const sd=seed();const phMap={};
-  sd.key.forEach(i=>phMap[i.id]=pPhOf(i,sd));
-  sd.categories.forEach(c=>c.phrases.forEach(i=>phMap[i.id]=pPhOf(i,sd)));
-  const fill=(p)=>{const cur=(p.phonetic&&p.phonetic[DATA.targetLang])||'';if(!cur&&phMap[p.id]){if(!p.phonetic)p.phonetic={};p.phonetic[DATA.targetLang]=phMap[p.id];}};
-  DATA.key.forEach(fill);DATA.categories.forEach(c=>c.phrases.forEach(fill));
-
-  // one-time: move 簡單用語 / Just the basics to front
+  if(!loaded){const v1=await Store.load(DKEY);if(v1){try{const old=JSON.parse(v1);if(old&&old.key&&old.sections)loaded=migrateLegacy(old);}catch(e){}}}
+  if(!loaded)loaded=seed('zh');
+  if(!loaded.nativeLang)loaded.nativeLang='zh';
+  if(!loaded.targetLang)loaded.targetLang='en';
+  const sd=seed('zh');const phMap={};
+  sd.key.forEach(i=>phMap[i.id]=i.phonetic.en);
+  sd.categories.forEach(c=>c.phrases.forEach(i=>phMap[i.id]=i.phonetic.en));
+  const fill=(p)=>{const cur=(p.phonetic&&p.phonetic.en)||'';if(!cur&&phMap[p.id]){if(!p.phonetic)p.phonetic={};p.phonetic.en=phMap[p.id];}};
+  loaded.key.forEach(fill);loaded.categories.forEach(c=>c.phrases.forEach(fill));
   const migrated=await Store.load(MKEY);
   if(!migrated){
-    const idx=DATA.categories.findIndex(c=>(c.title&&(c.title.en==='Just the basics'||c.title[DATA.nativeLang]==='簡單用語')));
-    if(idx>0){const moved=DATA.categories.splice(idx,1)[0];DATA.categories.unshift(moved);await save();}
+    const idx=loaded.categories.findIndex(c=>(c.title&&(c.title.en==='Just the basics'||c.title.zh==='簡單用語')));
+    if(idx>0){const moved=loaded.categories.splice(idx,1)[0];loaded.categories.unshift(moved);}
     await Store.save(MKEY,'1');
   }
-
-  // one-time: refresh corrected readings on built-in phrases (keeps text edits & added phrases)
-  const PHV='weddingCard:mig:ph:v2';
   const phdone=await Store.load(PHV);
   if(!phdone){
-    const corr={};const sd2=seed();
-    sd2.key.forEach(i=>corr[i.id]=i.phonetic[sd2.targetLang]);
-    sd2.categories.forEach(c=>c.phrases.forEach(i=>corr[i.id]=i.phonetic[sd2.targetLang]));
-    const fix=(p)=>{if(corr[p.id]!==undefined){if(!p.phonetic)p.phonetic={};p.phonetic[DATA.targetLang]=corr[p.id];}};
-    DATA.key.forEach(fix);DATA.categories.forEach(c=>c.phrases.forEach(fix));
-    await save();await Store.save(PHV,'1');
+    const corr={};const sd2=seed('zh');
+    sd2.key.forEach(i=>corr[i.id]=i.phonetic.en);
+    sd2.categories.forEach(c=>c.phrases.forEach(i=>corr[i.id]=i.phonetic.en));
+    const fix=(p)=>{if(corr[p.id]!==undefined){if(!p.phonetic)p.phonetic={};p.phonetic.en=corr[p.id];}};
+    loaded.key.forEach(fix);loaded.categories.forEach(c=>c.phrases.forEach(fix));
+    await Store.save(PHV,'1');
   }
+  return loaded;
+}
+function setTitle(){const el=document.getElementById('appTitle');if(el)el.textContent=(DATA.title&&DATA.title[uiLang])||PACKS[currentPackId].title[uiLang]||t('appName');}
 
-  document.getElementById('appTitle').textContent=(DATA.title&&DATA.title[DATA.nativeLang])||'婚禮對話卡';
-  render();
+/* ---- ui language ---- */
+function setUiLang(l){
+  uiLang=l;Store.save(UIKEY,l);
+  document.documentElement.lang=(l==='zh'?'zh-Hant':'en');
+  applyStrings();
+  if(!landing.classList.contains('hide')){ buildLanding(); } else { render(); }
+}
+function applyStrings(){
+  const S=STRINGS[uiLang];
+  document.getElementById('warnbar').textContent=S.warn;
+  document.getElementById('introText').innerHTML=escHtml(S.introTop)+'<span class="em">'+escHtml(S.introEm)+'</span>'+escHtml(S.introBottom);
+  document.getElementById('keyBadge').textContent=S.keyBadge;
+  document.getElementById('keyTitle').textContent=S.keyTitle;
+  document.getElementById('keyNote').textContent=S.keyNote;
+  document.getElementById('addKeyBtn').textContent=S.addKey;
+  document.getElementById('addSectionBtn').textContent=S.addSection;
+  document.getElementById('setTitle').textContent=S.settings;
+  document.getElementById('lblUiLang').textContent=S.uiLang;
+  document.getElementById('lblTextSize').textContent=S.textSize;
+  document.getElementById('lblVoice').textContent=S.voice;
+  document.getElementById('voicePreview').textContent=S.preview;
+  document.getElementById('voiceTip').textContent=S.voiceTip;
+  document.getElementById('voiceRefresh').textContent=S.voiceRefresh;
+  document.getElementById('lblNeural').textContent=S.neural;
+  document.querySelector('#neuralSeg [data-neural="0"]').textContent=S.neuralOff;
+  document.querySelector('#neuralSeg [data-neural="1"]').textContent=S.neuralOn;
+  document.getElementById('neuralTip').textContent=S.neuralTip;
+  document.getElementById('lblSpeed').textContent=S.speed;
+  document.getElementById('btnNormal').textContent=S.normal;
+  document.getElementById('btnSlow').textContent=S.slow;
+  document.getElementById('lblAi').textContent=S.ai;
+  document.getElementById('gkeyInput').placeholder=S.aiPlaceholder;
+  document.getElementById('aiTip').textContent=S.aiTip;
+  document.getElementById('resetBtn').textContent=S.reset;
+  document.getElementById('modalTitle').textContent=S.addTitle;
+  document.getElementById('modalNatLabel').textContent=natLabel();
+  document.getElementById('modalTgtLabel').textContent=tgtLabel();
+  document.getElementById('modalPhLabel').textContent=phLabel();
+  document.getElementById('modalCatLabel').textContent=S.cat;
+  document.getElementById('modalTrBtn').textContent=S.translate;
+  document.getElementById('modalSave').textContent=S.save;
+  document.getElementById('modalCancel').textContent=S.cancel;
+  document.getElementById('modal-nat').placeholder=S.natPh;
+  document.getElementById('modal-tgt').placeholder=S.tgtPh;
+  document.getElementById('modal-ph').placeholder=S.phPh;
+  document.getElementById('contactModalTitle').textContent=S.contactTitle;
+  document.getElementById('contactNameLabel').textContent=S.contactName;
+  document.getElementById('contactEmailLabel').textContent=S.contactEmail;
+  document.getElementById('contactMsgLabel').textContent=S.contactMsg;
+  document.getElementById('contactSend').textContent=S.contactSend;
+  document.getElementById('contactCancelBtn').textContent=S.contactCancel;
+  document.getElementById('contact-name').placeholder=S.contactNamePh;
+  document.getElementById('contact-email').placeholder=S.contactEmailPh;
+  document.getElementById('contact-message').placeholder=S.contactMsgPh;
+  document.getElementById('modal-nat').className='in-native '+langClass(DATA.nativeLang);
+  document.getElementById('modal-tgt').className='in-target '+langClass(DATA.targetLang);
+  document.getElementById('modal-ph').className='in-ph '+phoneticLangClass();
+  const fsLabels=uiLang==='zh'?['小','標準','大','特大']:['S','M','L','XL'];
+  document.querySelectorAll('#fsSeg button').forEach((b,i)=>{b.textContent=fsLabels[i];});
+  document.querySelectorAll('#uiLangSeg button').forEach(b=>b.classList.toggle('active',b.dataset.uilang===uiLang));
+  setTitle();
+}
+
+/* ---- controls ---- */
+document.querySelectorAll('#fsSeg button').forEach(b=>{b.addEventListener('click',async()=>{const v=b.dataset.fs;applyFontScale(v);await Store.save(FKEY,v);});});
+document.querySelectorAll('.seg [data-rate]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.seg [data-rate]').forEach(x=>x.classList.remove('active'));b.classList.add('active');rate=parseFloat(b.dataset.rate);});});
+document.getElementById('voiceSelect').addEventListener('change',async function(){selectedVoiceName=this.value;resolveVoice();await Store.save(voiceKey(),selectedVoiceName);previewVoice();});
+document.getElementById('voicePreview').addEventListener('click',previewVoice);
+document.getElementById('voiceRefresh').addEventListener('click',()=>{populateVoices();previewVoice();});
+document.getElementById('gkeyInput').addEventListener('input',async function(){geminiKey=this.value.trim();await Store.save(TKEY,geminiKey);});
+document.querySelectorAll('#uiLangSeg button').forEach(b=>{b.addEventListener('click',()=>setUiLang(b.dataset.uilang));});
+document.querySelectorAll('#neuralSeg button').forEach(b=>{b.addEventListener('click',()=>enableNeural(b.dataset.neural==='1'));});
+
+function syncEditBtn(){const b=document.getElementById('editToggleTop');if(b){b.classList.toggle('on',editMode);const lbl=b.querySelector('.elabel');if(lbl)lbl.textContent=editMode?t('done'):t('edit');}}
+function setEditMode(on){editMode=on;editingId=null;confirmId=null;secEditId=null;syncEditBtn();render();}
+document.getElementById('editToggleTop').addEventListener('click',()=>setEditMode(!editMode));
+document.querySelector('[data-add-key]').addEventListener('click',()=>openAddPopup('key'));
+document.getElementById('addSectionBtn').addEventListener('click',async()=>{const cat=newCategory();DATA.categories.push(cat);secEditId=cat.id;await save();render();window.scrollTo(0,document.body.scrollHeight);});
+document.getElementById('resetBtn').addEventListener('click',async()=>{if(confirm(t('resetConfirm'))){await Store.clear(packStorageKey(currentPackId));DATA=seed(currentPackId);editingId=null;confirmId=null;secEditId=null;render();closeSheet();}});
+
+/* ---- init ---- */
+(async function(){
+  uiLang=(await Store.load(UIKEY))||detectLang();
+  document.documentElement.lang=(uiLang==='zh'?'zh-Hant':'en');
+  const fsv=await Store.load(FKEY);applyFontScale(fsv||'1');
+  const gk=await Store.load(TKEY);if(gk){geminiKey=gk;const gi=document.getElementById('gkeyInput');if(gi)gi.value=gk;}
+  const nv=await Store.load(NEURALKEY);if(nv)enableNeural(true);
+  applyStrings();
+  syncEditBtn();
+  const last=await Store.load(LASTKEY);
+  if(last&&PACKS[last]){ await loadPack(last); landing.classList.add('hide'); applyStrings(); render(); }
+  else { showLanding(); }
 })();
-function pPhOf(p,ctx){return (p.phonetic&&p.phonetic[ctx.targetLang])||'';}
 </script>
 </body>
 </html>
